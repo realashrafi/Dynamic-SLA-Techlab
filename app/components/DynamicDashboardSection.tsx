@@ -42,7 +42,7 @@ export default function DynamicDashboardSection() {
                     transition={{ duration: 0.8 }}
                     className="text-4xl md:text-5xl font-bold text-[#FF6B00] text-center mb-12"
                 >
-                    داشبورد داینامیک SLA (دمو)
+                     داینامیک SLA (دمو)
                 </motion.h2>
 
                 {/* فرم ورودی ثابت (sticky در این سکشن) */}
