@@ -7,14 +7,23 @@ const tableData = [
     { rank: 1, origin: 'تهران', dest: 'اصفهان', plan: 1, actual: 38.6, count: 325871, avgTime: 2, improved: 83.2 },
     { rank: 2, origin: 'تهران', dest: 'رشت', plan: 1, actual: 39.5, count: 206913, avgTime: 2, improved: 89.3 },
     { rank: 3, origin: 'اصفهان', dest: 'تهران', plan: 1, actual: 35.5, count: 138468, avgTime: 2, improved: 79.2 },
-    { rank: 4, origin: 'بندرعباس', dest: 'تهران', plan: 2, actual: 26.7, count: 155573, avgTime: 3, improved: 62.7 },
+    { rank: 4, origin: 'بندرعباس', dest: 'تهران', plan: 2, actual: 26.7, count: 135573, avgTime: 3, improved: 62.7 },
     { rank: 5, origin: 'تهران', dest: 'کرمانشاه', plan: 1, actual: 30.6, count: 117741, avgTime: 2, improved: 78.2 },
     { rank: 6, origin: 'رشت', dest: 'تهران', plan: 1, actual: 39.2, count: 97732, avgTime: 2, improved: 81.9 },
-    { rank: 7, origin: 'تهران', dest: 'گنجان', plan: 1, actual: 37.5, count: 87485, avgTime: 2, improved: 88.6 },
+    { rank: 7, origin: 'تهران', dest: 'گرگان', plan: 1, actual: 37.5, count: 87485, avgTime: 2, improved: 88.6 },
     { rank: 8, origin: 'زاهدان', dest: 'تهران', plan: 2, actual: 17.5, count: 78344, avgTime: 3, improved: 57.5 },
     { rank: 9, origin: 'قم', dest: 'تهران', plan: 1, actual: 33.0, count: 63788, avgTime: 2, improved: 79.7 },
     { rank: 10, origin: 'تهران', dest: 'سنندج', plan: 1, actual: 38.6, count: 63714, avgTime: 2, improved: 86.5 },
-    // ... می‌توانید ۱۰ ردیف دیگر را اضافه کنید یا فقط ۱۰ تای برتر را نگه دارید
+    { rank: 11, origin: 'تهران', dest: 'زاهدان', plan: 2, actual: 34.0, count: 54409, avgTime: 3, improved: 67.2 },
+    { rank: 12, origin: 'ساری', dest: 'تهران', plan: 1, actual: 32.6, count: 50255, avgTime: 2, improved: 77.8 },
+    { rank: 13, origin: 'تهران', dest: 'ایلام', plan: 1, actual: 27.1, count: 49387, avgTime: 2, improved: 71.6 },
+    { rank: 14, origin: 'گرگان', dest: 'تهران', plan: 1, actual: 21.8, count: 45293, avgTime: 2, improved: 77.7 },
+    { rank: 15, origin: 'تهران', dest: 'شاهین شهر', plan: 1, actual: 37.7, count: 39451, avgTime: 2, improved: 84.9 },
+    { rank: 16, origin: 'تهران', dest: 'بندرانزلی', plan: 1, actual: 35.7, count: 38174, avgTime: 2, improved: 86.5 },
+    { rank: 17, origin: 'یزد', dest: 'تهران', plan: 1, actual: 25.8, count: 37576, avgTime: 2, improved: 77.0 },
+    { rank: 18, origin: 'سنندج', dest: 'تهران', plan: 1, actual: 19.1, count: 37251, avgTime: 2, improved: 71.8 },
+    { rank: 19, origin: 'تهران', dest: 'لاهیجان', plan: 1, actual: 35.8, count: 37049, avgTime: 2, improved: 85.7 },
+    { rank: 20, origin: 'تهران', dest: 'شهرکرد', plan: 1, actual: 24.0, count: 35606, avgTime: 2, improved: 69.4 }
 ]
 
 const rowVariants = {
@@ -42,7 +51,7 @@ export default function ComparisonTable() {
                         className="w-20 h-1.5 bg-[#FF6B00] rounded-full origin-left"
                     />
                     <h2 className="text-3xl md:text-5xl font-bold text-[#FF6B00]">
-                        مقایسه SLA برنامه‌ریزی شده و عملکرد واقعی در ۲۰ مسیر پرتکرار شبکه
+                        مشخصات SLA بین 20 مبدا و مقصد با بیشترین اختلاف بین زمان تحویل در واقعیت و زمان از قبل تعیین شده
                     </h2>
                 </div>
 

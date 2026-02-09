@@ -3,6 +3,7 @@
 
 import { motion } from 'framer-motion'
 import { easeOut } from 'framer-motion'
+import Image from "next/image";
 
 export default function Hero() {
     return (
@@ -17,7 +18,7 @@ export default function Hero() {
             >
                 {/* لوگو nona – اگر svg داری جایگزین کن */}
                 <div className="text-8xl md:text-9xl font-black tracking-tight mb-8">
-                    n<span className="text-[#FF6B00]">o</span>na
+                    <Image src={'/NonaLogo.png'} width={700} className={'mx-auto'} height={200} alt={'نونا'}/>
                 </div>
 
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 text-white">

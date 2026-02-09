@@ -1,7 +1,7 @@
 //@ts-nocheck
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import {
     BarChart,
@@ -12,23 +12,49 @@ import {
     Tooltip,
     ResponsiveContainer,
     Line,
-    Legend, ReferenceLine,
+    Legend,
+    ReferenceLine,
 } from 'recharts'
-import { dataModel } from '@/app/components/dataModel' // مسیر درست فایل dataModel رو تنظیم کن
+import { dataModel } from '@/app/components/dataModel'
 
 const cities = ['تهران', 'اصفهان', 'رشت']
 
 export default function DynamicSlaDashboardSection() {
     const [origin, setOrigin] = useState<string | null>(null)
     const [destination, setDestination] = useState<string | null>(null)
-    const [selectedTime, setSelectedTime] = useState<'time1' | 'time2'>('time1')
+
+    // ✅ به جای time1/time2 ثابت، کلید هفته انتخابی از آرایه weeks می‌آید (مثل time2/time3/time4)
+    const [selectedTime, setSelectedTime] = useState<string | null>(null)
+
     const [activeTab, setActiveTab] = useState('overview')
 
     const selectedPath = dataModel.find(
         (path) => path.origin === origin && path.destination === destination
     )
 
-    const currentData = selectedPath ? selectedPath[selectedTime] : null
+    // ✅ weeks داخل مسیر فیلتر شده
+    const availableWeeks = selectedPath?.weeks ?? []
+
+    // ✅ اگر مسیر عوض شد، یک هفته پیش‌فرض انتخاب کن
+    useEffect(() => {
+        if (!selectedPath) {
+            setSelectedTime(null)
+            return
+        }
+
+        const weeks = selectedPath.weeks ?? []
+        if (!weeks.length) {
+            setSelectedTime(null)
+            return
+        }
+
+        if (!selectedTime || !weeks.includes(selectedTime)) {
+            setSelectedTime(weeks[0])
+        }
+    }, [selectedPath])
+
+    // ✅ دیتای فعلی بر اساس هفته انتخابی (کلیدهای time2/time3/time4)
+    const currentData = selectedPath && selectedTime ? selectedPath[selectedTime] : null
 
     const availableDestinations = origin
         ? dataModel.filter((path) => path.origin === origin).map((path) => path.destination)
@@ -63,6 +89,7 @@ export default function DynamicSlaDashboardSection() {
                                 onChange={(e) => {
                                     setOrigin(e.target.value)
                                     setDestination(null)
+                                    setSelectedTime(null) // ✅ ریست بازه زمانی
                                 }}
                                 className="w-full bg-[#0A2540] border border-[#FF6B00]/50 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
                             >
@@ -81,7 +108,10 @@ export default function DynamicSlaDashboardSection() {
                             <label className="block text-sm opacity-80 mb-1">مقصد</label>
                             <select
                                 value={destination || ''}
-                                onChange={(e) => setDestination(e.target.value)}
+                                onChange={(e) => {
+                                    setDestination(e.target.value)
+                                    setSelectedTime(null) // ✅ ریست بازه زمانی
+                                }}
                                 disabled={!origin}
                                 className="w-full bg-[#0A2540] border border-[#FF6B00]/50 rounded-lg px-4 py-3 text-white disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
                             >
@@ -94,30 +124,25 @@ export default function DynamicSlaDashboardSection() {
                             </select>
                         </div>
 
+                        {/* ✅ انتخاب بازه زمانی از weeks */}
                         <div className="flex-1 min-w-[280px]">
                             <label className="block text-sm opacity-80 mb-1">بازه زمانی</label>
-                            <div className="flex gap-3">
-                                <button
-                                    onClick={() => setSelectedTime('time1')}
-                                    className={`flex-1 py-3 rounded-lg font-medium transition-all ${
-                                        selectedTime === 'time1'
-                                            ? 'bg-[#FF6B00] text-black shadow-md'
-                                            : 'bg-[#0A2540] border border-[#FF6B00]/50 text-white hover:bg-[#FF6B00]/30'
-                                    }`}
-                                >
-                                    بازه اول
-                                </button>
-                                <button
-                                    onClick={() => setSelectedTime('time2')}
-                                    className={`flex-1 py-3 rounded-lg font-medium transition-all ${
-                                        selectedTime === 'time2'
-                                            ? 'bg-[#FF6B00] text-black shadow-md'
-                                            : 'bg-[#0A2540] border border-[#FF6B00]/50 text-white hover:bg-[#FF6B00]/30'
-                                    }`}
-                                >
-                                    بازه دوم
-                                </button>
-                            </div>
+                            <select
+                                value={selectedTime || ''}
+                                onChange={(e) => setSelectedTime(e.target.value)}
+                                disabled={!selectedPath || availableWeeks.length === 0}
+                                className="w-full bg-[#0A2540] border border-[#FF6B00]/50 rounded-lg px-4 py-3 text-white disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
+                            >
+                                <option value="" disabled>
+                                    {selectedPath ? 'انتخاب هفته' : 'ابتدا مبدا و مقصد را انتخاب کنید'}
+                                </option>
+
+                                {availableWeeks.map((wk) => (
+                                    <option key={wk} value={wk}>
+                                        {wk}
+                                    </option>
+                                ))}
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -179,12 +204,12 @@ export default function DynamicSlaDashboardSection() {
                                                 </div>
 
                                                 <div className="flex items-center gap-2">
-            <span className="px-3 py-1.5 rounded-full bg-[#0A2540]/70 border border-white/10 text-white/70 text-xs font-bold">
-              SLA
-            </span>
+                                                    <span className="px-3 py-1.5 rounded-full bg-[#0A2540]/70 border border-white/10 text-white/70 text-xs font-bold">
+                                                        SLA
+                                                    </span>
                                                     <span className="px-3 py-1.5 rounded-full bg-[#FF6B00]/10 border border-[#FF6B00]/25 text-[#FF6B00] text-xs font-bold">
-              {currentData.overview.currentSla} روز
-            </span>
+                                                        {currentData.overview.currentSla} روز
+                                                    </span>
                                                 </div>
                                             </div>
 
@@ -220,21 +245,21 @@ export default function DynamicSlaDashboardSection() {
                                                     </div>
 
                                                     <div className="leading-none">
-              <span className="text-6xl md:text-7xl font-black text-[#FF6B00] drop-shadow-[0_10px_30px_rgba(255,107,0,0.25)]">
-                {currentData.overview.currentSla}
-              </span>
+                                                        <span className="text-6xl md:text-7xl font-black text-[#FF6B00] drop-shadow-[0_10px_30px_rgba(255,107,0,0.25)]">
+                                                            {currentData.overview.currentSla}
+                                                        </span>
                                                         <span className="text-white/60 text-base md:text-lg font-bold mr-2">
-                روز
-              </span>
+                                                            روز
+                                                        </span>
                                                     </div>
 
                                                     <div className="mt-4 flex flex-wrap gap-2 justify-center sm:justify-end">
-              <span className="px-3 py-2 rounded-2xl bg-white/5 border border-white/10 text-white/70 text-xs">
-                Progress: {currentData.overview.meetSla ?? 0}%
-              </span>
                                                         <span className="px-3 py-2 rounded-2xl bg-white/5 border border-white/10 text-white/70 text-xs">
-                Commitments
-              </span>
+                                                            Progress: {currentData.overview.meetSla ?? 0}%
+                                                        </span>
+                                                        <span className="px-3 py-2 rounded-2xl bg-white/5 border border-white/10 text-white/70 text-xs">
+                                                            Commitments
+                                                        </span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -244,8 +269,8 @@ export default function DynamicSlaDashboardSection() {
                                                 <div className="flex items-center justify-between mb-3">
                                                     <span className="text-white/80 text-sm font-semibold">پایبندی به تعهد</span>
                                                     <span className="text-[#FF6B00] text-sm font-bold">
-              {currentData.overview.meetSla ?? 0}%
-            </span>
+                                                        {currentData.overview.meetSla ?? 0}%
+                                                    </span>
                                                 </div>
 
                                                 <div className="overflow-hidden h-10 rounded-full bg-white/10 border border-[#FF6B00]/25 shadow-inner">
@@ -255,9 +280,9 @@ export default function DynamicSlaDashboardSection() {
                                                         transition={{ duration: 1.5, ease: 'easeOut' }}
                                                         className="h-full bg-gradient-to-r from-[#FF6B00] to-[#FF8C00] rounded-full flex items-center justify-end pr-4"
                                                     >
-              <span className="text-white font-black text-base md:text-lg drop-shadow-[0_4px_10px_rgba(0,0,0,0.4)]">
-                {currentData.overview.meetSla ?? 0}%
-              </span>
+                                                        <span className="text-white font-black text-base md:text-lg drop-shadow-[0_4px_10px_rgba(0,0,0,0.4)]">
+                                                            {currentData.overview.meetSla ?? 0}%
+                                                        </span>
                                                     </motion.div>
                                                 </div>
 
@@ -279,7 +304,6 @@ export default function DynamicSlaDashboardSection() {
                                 )}
                             </div>
 
-
                             {/* چارت */}
                             <div className="lg:col-span-3">
                                 <motion.div
@@ -298,10 +322,10 @@ export default function DynamicSlaDashboardSection() {
                                         <div className="flex items-center justify-between gap-4 mb-6">
                                             <div>
                                                 <h4 className="text-2xl md:text-3xl font-black text-[#FF6B00] tracking-tight">
-                                                    Shipments Delivery Times
+                                                    Actual Delivery Times
                                                 </h4>
                                                 <p className="text-white/60 text-sm mt-1">
-                                                    نمودار تعداد مرسولات + روند تحویل
+                                                    روند تحویل
                                                 </p>
                                             </div>
 
@@ -376,6 +400,101 @@ export default function DynamicSlaDashboardSection() {
                                         </div>
                                     </div>
                                 </motion.div>
+                            </div><div className="lg:col-span-3">
+                                <motion.div
+                                    initial={{ opacity: 0, x: 40 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.7, delay: 0.2 }}
+                                    className="relative overflow-hidden rounded-3xl border border-[#FF6B00]/35 bg-gradient-to-br from-[#0A2540] to-[#0A1F44] p-6 lg:p-8 shadow-[0_18px_60px_rgba(0,0,0,0.55)] h-full"
+                                >
+                                    {/* Glow / Glass */}
+                                    <div className="absolute inset-0 bg-white/5 backdrop-blur-md" />
+                                    <div className="absolute -top-24 -left-24 h-80 w-80 rounded-full bg-[#FF6B00]/10 blur-3xl" />
+                                    <div className="absolute -bottom-28 -right-28 h-80 w-80 rounded-full bg-blue-500/10 blur-3xl" />
+
+                                    <div className="relative z-10 h-full flex flex-col">
+                                        {/* Header */}
+                                        <div className="flex items-center justify-between gap-4 mb-6">
+                                            <div>
+                                                <h4 className="text-2xl md:text-3xl font-black text-[#FF6B00] tracking-tight">
+                                                    Shipments Amount
+                                                </h4>
+                                                <p className="text-white/60 text-sm mt-1">
+                                                    نمودار تعداد مرسولات
+                                                </p>
+                                            </div>
+
+                                            <div className="px-4 py-2 rounded-2xl bg-[#0A2540]/70 border border-white/10 text-white/70 text-xs font-bold">
+                                                Overview Chart
+                                            </div>
+                                        </div>
+
+                                        {/* Chart Body */}
+                                        <div className="h-[380px] md:h-[420px] lg:h-[480px] rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
+                                            {currentData ? (
+                                                <div className="w-full h-full p-3 md:p-4">
+                                                    <ResponsiveContainer width="100%" height="100%">
+                                                        <BarChart
+                                                            data={currentData.overview.chartData}
+                                                            margin={{ top: 20, right: 30, left: 20, bottom: 40 }}
+                                                        >
+                                                            <defs>
+                                                                <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
+                                                                    <stop offset="0%" stopColor="#3B82F6" />
+                                                                    <stop offset="100%" stopColor="#1E40AF" />
+                                                                </linearGradient>
+                                                            </defs>
+
+                                                            <CartesianGrid strokeDasharray="4 4" stroke="#ffffff12" />
+                                                            <XAxis dataKey="name" stroke="#ffffff90" tick={{ fill: '#ffffff', fontSize: 14 }} />
+                                                            <YAxis stroke="#ffffff90" tick={{ fill: '#ffffff', fontSize: 14 }} />
+
+                                                            <Tooltip
+                                                                contentStyle={{
+                                                                    backgroundColor: '#0A2540ee',
+                                                                    border: '1px solid #FF6B00',
+                                                                    borderRadius: '12px',
+                                                                    color: 'white',
+                                                                    padding: '10px 14px',
+                                                                }}
+                                                                labelStyle={{ color: '#FF6B00', fontWeight: 'bold' }}
+                                                                itemStyle={{ color: 'white' }}
+                                                            />
+
+                                                            <Legend
+                                                                wrapperStyle={{ color: 'white', fontSize: 13, paddingTop: 10 }}
+                                                                iconType="circle"
+                                                            />
+
+                                                            <Bar
+                                                                dataKey="pa"
+                                                                fill="url(#barGradient)"
+                                                                radius={[10, 10, 0, 0]}
+                                                                name="تعداد مرسولات"
+                                                                barSize={40}
+                                                            />
+
+                                                            <Line
+                                                                type="monotone"
+                                                                dataKey="pa"
+                                                                stroke="#FF6B00"
+                                                                strokeWidth={4}
+                                                                dot={{ r: 6, stroke: '#FF6B00', strokeWidth: 2, fill: '#0A2540' }}
+                                                                activeDot={{ r: 10 }}
+                                                                name="روند تحویل"
+                                                            />
+                                                        </BarChart>
+                                                    </ResponsiveContainer>
+                                                </div>
+                                            ) : (
+                                                <div className="h-full flex flex-col items-center justify-center text-xl text-white/70">
+                                                    <div className="text-5xl mb-4 opacity-80">📊</div>
+                                                    ابتدا مبدا و مقصد را انتخاب کنید
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                </motion.div>
                             </div>
                         </div>
 
@@ -398,8 +517,8 @@ export default function DynamicSlaDashboardSection() {
                                                 <p className="text-xs lg:text-sm text-white/60 mt-1">نسبت به SLA فعلی</p>
                                             </div>
                                             <span className="px-3 py-1 rounded-full bg-[#FF6B00]/10 border border-[#FF6B00]/25 text-[#FF6B00] text-xs font-bold">
-            KPI
-          </span>
+                                                KPI
+                                            </span>
                                         </div>
 
                                         <div className="flex items-end justify-between">
@@ -432,13 +551,14 @@ export default function DynamicSlaDashboardSection() {
                                                 <p className="text-xs lg:text-sm text-white/60 mt-1">مدل داینامیک</p>
                                             </div>
                                             <span className="px-3 py-1 rounded-full bg-[#0A2540]/60 border border-white/10 text-white/70 text-xs font-bold">
-            Suggested
-          </span>
+                                                Suggested
+                                            </span>
                                         </div>
 
                                         <div className="flex items-end justify-between">
                                             <div className="text-[#FF6B00] text-4xl lg:text-5xl font-black leading-none">
-                                                {currentData?.performance?.suggestSla ?? '—'} <span className="text-white/80 text-base lg:text-lg font-bold">روز</span>
+                                                {currentData?.performance?.suggestSla ?? '—'}{' '}
+                                                <span className="text-white/80 text-base lg:text-lg font-bold">روز</span>
                                             </div>
                                             <div className="h-10 w-10 rounded-2xl bg-white/5 border border-white/10 grid place-items-center text-white/80 group-hover:bg-white/10 transition">
                                                 ⏱
@@ -467,8 +587,8 @@ export default function DynamicSlaDashboardSection() {
                                                 <p className="text-xs lg:text-sm text-white/60 mt-1">با SLA داینامیک</p>
                                             </div>
                                             <span className="px-3 py-1 rounded-full bg-green-500/10 border border-green-500/25 text-green-300 text-xs font-bold">
-            New
-          </span>
+                                                New
+                                            </span>
                                         </div>
 
                                         <div className="flex items-end justify-between">
@@ -681,8 +801,8 @@ export default function DynamicSlaDashboardSection() {
                                                 <div className="flex items-center justify-between">
                                                     <span className="text-white/70 text-sm">Status</span>
                                                     <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#FF6B00]/20 text-[#FF6B00] border border-[#FF6B00]/30">
-                LIVE
-              </span>
+                                                        LIVE
+                                                    </span>
                                                 </div>
 
                                                 <div className="mt-4 space-y-3">
@@ -996,12 +1116,12 @@ export default function DynamicSlaDashboardSection() {
                             </div>
                         </div>
 
-                    ) }
+                    )}
                 </motion.div>
 
-                <div className="mt-12 text-center opacity-70 text-sm">
-                    ارائه شده توسط nona
-                </div>
+                {/*<div className="mt-12 text-center opacity-70 text-sm">*/}
+                {/*    ارائه شده توسط nona*/}
+                {/*</div>*/}
             </div>
         </section>
     )

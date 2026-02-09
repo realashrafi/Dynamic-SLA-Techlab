@@ -16,12 +16,12 @@ export default function BenefitsSection() {
                 <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-16">
                     <div className="flex items-center gap-6">
                         <div className="w-16 h-1.5 bg-white rounded-full" />
-                        <h2 className="text-4xl md:text-6xl font-black text-white drop-shadow-lg">
-                            اهمیت و ضرورت انجام پروژه
+                        <h2 className="text-4xl md:text-5xl font-black text-white drop-shadow-lg">
+                            SLA در  کدام لایه می تواند بهبود ایجاد کند؟
+                            <div className="text-xl font-bold mt-2 text-white/90 tracking-wide">
+                                مسئله و راهکار در سه لایه تعریف می شود
+                            </div>
                         </h2>
-                    </div>
-                    <div className="text-3xl md:text-5xl font-bold text-white/90 tracking-wide">
-                        Dynamic SLA
                     </div>
                 </div>
 
@@ -52,7 +52,7 @@ export default function BenefitsSection() {
                                 </li>
                                 <li className="flex items-start gap-3">
                                     <span className="text-2xl">•</span>
-                                    افزایش پیش‌بینی‌پذیری خدمت برای فرستنده و گیرنده
+                                    افزایش قابلیت کنترل در طول سفر مرسوله
                                 </li>
                             </ul>
                         </motion.div>

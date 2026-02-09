@@ -4,11 +4,11 @@
 import { motion } from 'framer-motion'
 
 const problems = [
-    'تصمیم‌گیری ایستا در محیطی ذاتاً پویا',
-    'فقدان SLA داده محور و تطبیقی',
-    'ناترازی تعهد زمانی با واقعیت اجرایی شبکه',
-    'کاهش اعتبار SLA به عنوان ابزار مدیریت عملکرد',
-    'بی‌ثباتی تحقق تعهد حتی در مسیرهای ثابت',
+    'تعریف SLA به‌صورت ایستا در محیطی با رفتار پویا و متغیر',
+    'فاصله معنادار میان تعهد زمانی اعلام‌شده و عملکرد واقعی شبکه',
+    'ناپایداری تحقق SLA حتی در مبدا–مقصد های ثابت در طول زمان',
+    'تبدیل SLA از ابزار پایش عملکرد به عدد قراردادی',
+    'افزایش زیان مالی و تضعیف اعتماد مشتری ناشی از بدقولی‌های موجود در زمان تحویل',
 ]
 
 export default function ProblemSection() {
@@ -18,7 +18,7 @@ export default function ProblemSection() {
                 <div className="flex items-center gap-6 mb-12">
                     <div className="w-16 h-1.5 bg-[#FF6B00] rounded-full" />
                     <h2 className="text-4xl md:text-5xl font-bold text-[#FF6B00]">
-                        What is the Problem
+                        مسئله چیست؟
                     </h2>
                 </div>
 

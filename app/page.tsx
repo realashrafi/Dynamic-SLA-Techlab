@@ -37,6 +37,7 @@ export default function Home() {
             </motion.div>
             <ExecSummary  />
             <ProblemSection />
+            <QuestionsAndThankYou/>
             <BenefitsSection/>
             <AnalysisMethod/>
             <ComparisonTable/>
@@ -45,7 +46,6 @@ export default function Home() {
             <FactorsSection/>
             <DynamicDashboardSection/>
             <SolutionArchitecture/>
-            <QuestionsAndThankYou/>
         </main>
     )
 }

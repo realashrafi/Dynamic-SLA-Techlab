@@ -5,12 +5,12 @@ import { motion } from 'framer-motion'
 import { easeOut } from 'framer-motion'
 
 const questions = [
-    'SLA آیا مال چگونگی و بر چه مبنایی تعریف می‌شود؟',
+    'SLA ایده‌آل چگونه و بر چه مبنایی تعریف می‌شود؟',
     'چه عواملی بیشترین اثر را بر تحقق SLA دارند؟',
     'SLA داینامیک در شرایط بحرانی چه ارزشی ایجاد می‌کند؟',
     'مالک تصمیم SLA در سازمان کیست؟',
     'وضعیت بلوغ فعلی سازمان در SLA داینامیک چگونه است؟',
-    'پیامد قراردادن و حقوقی SLA داینامیک چیست؟',
+    'پیامد قراردادی و حقوقی SLA داینامیک چیست؟',
 ]
 
 const questionVariants = {
@@ -41,7 +41,7 @@ export default function QuestionsAndThankYou() {
                             className="w-16 h-1.5 bg-[#FF6B00] rounded-full origin-left"
                         />
                         <h2 className="text-3xl md:text-5xl font-bold text-[#FF6B00]">
-                            سوالات پروره
+                            سوالات پروژه
                         </h2>
                     </div>
 
@@ -74,40 +74,40 @@ export default function QuestionsAndThankYou() {
             </section>
 
             {/* صفحه تشکر / پایان */}
-            <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#001F3F] to-[#001F3F] text-white px-6">
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1.2, ease: easeOut }}
-                    className="text-center"
-                >
-                    <div className="mb-12">
-                        <div className="text-8xl md:text-10xl font-black tracking-wider drop-shadow-2xl">
-                            <span className="text-white">n</span>
-                            <span className="text-[#FF6B00]">o</span>
-                            <span className="text-white">na</span>
-                        </div>
-                    </div>
+            {/*<section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#001F3F] to-[#001F3F] text-white px-6">*/}
+            {/*    <motion.div*/}
+            {/*        initial={{ opacity: 0, scale: 0.8 }}*/}
+            {/*        animate={{ opacity: 1, scale: 1 }}*/}
+            {/*        transition={{ duration: 1.2, ease: easeOut }}*/}
+            {/*        className="text-center"*/}
+            {/*    >*/}
+            {/*        <div className="mb-12">*/}
+            {/*            <div className="text-8xl md:text-10xl font-black tracking-wider drop-shadow-2xl">*/}
+            {/*                <span className="text-white">n</span>*/}
+            {/*                <span className="text-[#FF6B00]">o</span>*/}
+            {/*                <span className="text-white">na</span>*/}
+            {/*            </div>*/}
+            {/*        </div>*/}
 
-                    <h2 className="text-4xl md:text-7xl font-bold mb-8 leading-tight">
-                        ممنون از نگاهتون!
-                    </h2>
+            {/*        <h2 className="text-4xl md:text-7xl font-bold mb-8 leading-tight">*/}
+            {/*            ممنون از نگاهتون!*/}
+            {/*        </h2>*/}
 
-                    <div className="text-6xl md:text-9xl mb-10">
-                        😊✨
-                    </div>
+            {/*        <div className="text-6xl md:text-9xl mb-10">*/}
+            {/*            😊✨*/}
+            {/*        </div>*/}
 
-                    <p className="text-xl md:text-3xl opacity-90 max-w-3xl mx-auto">
-                        منتظر همکاری و بحث‌های بیشتر در مورد SLA داینامیک در شبکه تیپاکس هستیم.
-                        <br />
-                        با تشکر از توجه شما
-                    </p>
+            {/*        <p className="text-xl md:text-3xl opacity-90 max-w-3xl mx-auto">*/}
+            {/*            منتظر همکاری و بحث‌های بیشتر در مورد SLA داینامیک در شبکه تیپاکس هستیم.*/}
+            {/*            <br />*/}
+            {/*            با تشکر از توجه شما*/}
+            {/*        </p>*/}
 
-                    <div className="mt-16 text-lg opacity-70">
-                        ارائه شده توسط nona – ۱۴۰۴
-                    </div>
-                </motion.div>
-            </section>
+            {/*        <div className="mt-16 text-lg opacity-70">*/}
+            {/*            ارائه شده توسط nona – ۱۴۰۴*/}
+            {/*        </div>*/}
+            {/*    </motion.div>*/}
+            {/*</section>*/}
         </>
     )
 }

@@ -16,7 +16,7 @@ export default function AnalysisMethod() {
                         className="w-20 h-1.5 bg-[#FF6B00] rounded-full origin-left"
                     />
                     <h2 className="text-4xl md:text-6xl font-black text-[#FF6B00] drop-shadow-lg">
-                        روش تحلیل
+                        چارچوب تحلیل و تصمیم‌سازی SLA
                     </h2>
                 </div>
 
@@ -29,7 +29,7 @@ export default function AnalysisMethod() {
                         className="lg:col-span-2 space-y-8 text-lg md:text-xl leading-relaxed"
                     >
                         <p className="font-medium">
-                            تحلیل پیشرفته داده‌های عملیاتی تیپاکس برای طراحی SLA داینامیک
+                            مبنای این تحلیل، نمای کلی SLA قابل تحقق تحت تاثیر محیط پویا و داده‌محور شبکه لجستیک تیپاکس است.
                         </p>
 
                         <ul className="space-y-5">
@@ -37,25 +37,31 @@ export default function AnalysisMethod() {
                 <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#FF6B00]/80 text-black font-bold flex items-center justify-center text-lg">
                   ۱
                 </span>
-                                تمرکز بر مسیرهای پرتکرار و حجم بالا
+                                تمرکز بر 20 مسیر با بیشترین تعداد مرسوله است
                             </li>
                             <li className="flex items-start gap-4">
                 <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#FF6B00]/80 text-black font-bold flex items-center justify-center text-lg">
                   ۲
                 </span>
-                                استفاده از مد زمان تحویل (بیشترین فراوانی)
+                                استفاده از مُد زمان تحویل به‌عنوان نماینده الگوی غالب عملکرد شبکه
                             </li>
                             <li className="flex items-start gap-4">
                 <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#FF6B00]/80 text-black font-bold flex items-center justify-center text-lg">
                   ۳
                 </span>
-                                بازه داده: هفته‌های ۱ تا ۳۲ سال ۱۴۰۳
+                                بازه تحلیل: هفته‌های ۱ تا ۳۲ سال ۱۴۰4
+                            </li>
+                            <li className="flex items-start gap-4">
+                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#FF6B00]/80 text-black font-bold flex items-center justify-center text-lg">
+                  4
+                </span>
+                                داده های موجود از جنگ 12 روزه به دلیل متفاوت بودن رفتار درون یابی شده اند.
                             </li>
                         </ul>
 
-                        <p className="text-[#FF6B00] font-medium pt-4">
-                            نتیجه: SLA داینامیک مبتنی بر واقعیت اجرایی + عوامل خارجی
-                        </p>
+                        {/*<p className="text-[#FF6B00] font-medium pt-4">*/}
+                        {/*    نتیجه: SLA داینامیک مبتنی بر واقعیت اجرایی + عوامل خارجی*/}
+                        {/*</p>*/}
                     </motion.div>
 
                     {/* ستون تصویر - غالب (4/5 عرض در دسکتاپ) */}
@@ -69,7 +75,7 @@ export default function AnalysisMethod() {
                         <img
                             src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80"
                             alt="Dynamic SLA Tipax - کامیون تیپاکس در مقابل برج آزادی"
-                            className="w-full h-auto object-cover brightness-90 contrast-110"
+                            className="w-full h-[400px] object-cover brightness-90 contrast-110"
                         />
 
                         {/* overlay گرادیان نارنجی + لوگو مرکزی */}
@@ -79,7 +85,7 @@ export default function AnalysisMethod() {
                                     DYNAMIC SLA
                                 </h3>
                                 <p className="text-2xl md:text-4xl text-white/90 mt-4 font-medium">
-                                    هوشمند • پویا • واقعی
+                                      پویا و واقعی
                                 </p>
                             </div>
                         </div>
