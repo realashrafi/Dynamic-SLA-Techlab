@@ -60,7 +60,7 @@ export default function TrendChartSection() {
                         className="w-16 h-1.5 bg-[#FF6B00] rounded-full origin-left"
                     />
                     <h2 className="text-3xl md:text-5xl font-bold text-[#FF6B00]">
-                        نمودار تعهد زمانی تحقیقی یافته در ۳۳ هفته اول سال ۱۴۰۴
+                        نمودار تعهد زمانی تحقق یافته در 32 هفته اول سال ۱۴۰۴
                     </h2>
                 </div>
 

@@ -16,7 +16,7 @@ export default function AnalysisMethod() {
                         className="w-20 h-1.5 bg-[#FF6B00] rounded-full origin-left"
                     />
                     <h2 className="text-4xl md:text-6xl font-black text-[#FF6B00] drop-shadow-lg">
-                        چارچوب تحلیل و تصمیم‌سازی SLA
+                        چارچوب روش تحلیل
                     </h2>
                 </div>
 
@@ -32,12 +32,12 @@ export default function AnalysisMethod() {
                             مبنای این تحلیل، نمای کلی SLA قابل تحقق تحت تاثیر محیط پویا و داده‌محور شبکه لجستیک تیپاکس است.
                         </p>
 
-                        <ul className="space-y-5">
+                        <ul className="space-y-10">
                             <li className="flex items-start gap-4">
                 <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#FF6B00]/80 text-black font-bold flex items-center justify-center text-lg">
                   ۱
                 </span>
-                                تمرکز بر 20 مسیر با بیشترین تعداد مرسوله است
+                                تمرکز بر مسیرها با بیشترین تعداد مرسوله است
                             </li>
                             <li className="flex items-start gap-4">
                 <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#FF6B00]/80 text-black font-bold flex items-center justify-center text-lg">
@@ -51,12 +51,12 @@ export default function AnalysisMethod() {
                 </span>
                                 بازه تحلیل: هفته‌های ۱ تا ۳۲ سال ۱۴۰4
                             </li>
-                            <li className="flex items-start gap-4">
-                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#FF6B00]/80 text-black font-bold flex items-center justify-center text-lg">
-                  4
-                </span>
-                                داده های موجود از جنگ 12 روزه به دلیل متفاوت بودن رفتار درون یابی شده اند.
-                            </li>
+                {/*            <li className="flex items-start gap-4">*/}
+                {/*<span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#FF6B00]/80 text-black font-bold flex items-center justify-center text-lg">*/}
+                {/*  4*/}
+                {/*</span>*/}
+                {/*                داده های موجود از جنگ 12 روزه به دلیل متفاوت بودن رفتار درون یابی شده اند.*/}
+                {/*            </li>*/}
                         </ul>
 
                         {/*<p className="text-[#FF6B00] font-medium pt-4">*/}

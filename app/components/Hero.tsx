@@ -22,7 +22,7 @@ export default function Hero() {
                 </div>
 
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 text-white">
-                    پیشنهاد راهکار SLA داینامیک
+                     راهکار SLA داینامیک
                     <br />
                     <span className="text-[#FF6B00] block mt-4">در شبکه لجستیک تیپاکس</span>
                 </h1>

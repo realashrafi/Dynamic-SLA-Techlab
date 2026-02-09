@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { easeOut } from 'framer-motion'
 
 const questions = [
-    'SLA ایده‌آل چگونه و بر چه مبنایی تعریف می‌شود؟',
+    'SLA  چگونه و بر چه مبنایی تعریف می‌شود؟',
     'چه عواملی بیشترین اثر را بر تحقق SLA دارند؟',
     'SLA داینامیک در شرایط بحرانی چه ارزشی ایجاد می‌کند؟',
     'مالک تصمیم SLA در سازمان کیست؟',

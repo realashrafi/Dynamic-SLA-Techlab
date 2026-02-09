@@ -51,7 +51,7 @@ export default function ComparisonTable() {
                         className="w-20 h-1.5 bg-[#FF6B00] rounded-full origin-left"
                     />
                     <h2 className="text-3xl md:text-5xl font-bold text-[#FF6B00]">
-                        مشخصات SLA بین 20 مبدا و مقصد با بیشترین اختلاف بین زمان تحویل در واقعیت و زمان از قبل تعیین شده
+                        مشخصات SLA بین 20 مبدا و مقصد کاندیدای SLA Dynamic
                     </h2>
                 </div>
 

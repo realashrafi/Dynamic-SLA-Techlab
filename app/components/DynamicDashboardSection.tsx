@@ -17,7 +17,7 @@ import {
 } from 'recharts'
 import { dataModel } from '@/app/components/dataModel'
 
-const cities = ['تهران', 'اصفهان', 'رشت']
+const cities = ['تهران', 'اصفهان', 'رشت', 'کرمانشاه', 'ارومیه', 'مهاباد', 'ابوموسی']
 
 // ---------------- Jalali date helpers (NO Gregorian conversion) ----------------
 
