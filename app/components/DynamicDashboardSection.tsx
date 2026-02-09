@@ -400,10 +400,11 @@ export default function DynamicSlaDashboardSection() {
                                         </div>
                                     </div>
                                 </motion.div>
-                            </div><div className="lg:col-span-3">
+                            </div>
+                            <div className="lg:col-span-5">
                                 <motion.div
-                                    initial={{ opacity: 0, x: 40 }}
-                                    animate={{ opacity: 1, x: 0 }}
+                                    initial={{ opacity: 0, y:30 }}
+                                    animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.7, delay: 0.2 }}
                                     className="relative overflow-hidden rounded-3xl border border-[#FF6B00]/35 bg-gradient-to-br from-[#0A2540] to-[#0A1F44] p-6 lg:p-8 shadow-[0_18px_60px_rgba(0,0,0,0.55)] h-full"
                                 >
