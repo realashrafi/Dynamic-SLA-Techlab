@@ -319,7 +319,7 @@ export const dataModel = [
                         tm: 4000,
                     },
                 ],
-                image:'map-screenshot'
+                image:'https://wonderful-yonath-zqfmh2rkb.storage.iran.liara.space/local-share/share/share%20one/Screenshot%202026-02-09%20093125.png'
             },
             risk:{
                 actRisk:{
