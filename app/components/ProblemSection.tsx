@@ -9,11 +9,13 @@ const problems = [
     'ناپایداری تحقق SLA حتی در مبدا–مقصد های ثابت در طول زمان',
     'تبدیل SLA از ابزار پایش عملکرد به عدد قراردادی',
     'افزایش زیان مالی و تضعیف اعتماد مشتری ناشی از بدقولی‌های موجود در زمان تحویل',
+    'غالب بودن مشتریان B2B و وابستگی تصمیم آن‌ها به رضایت مشتری نهایی',
+    'نقش زمان تحویل و عملکرد SLA به‌عنوان عامل غیرمستقیم در انتخاب تیپاکس توسط کسب‌وکارها'
 ]
 
 export default function ProblemSection() {
     return (
-        <section className="py-20 px-6 md:px-12 bg-gradient-to-b from-[#001F3F] to-[#001F3F] text-white">
+        <section className="py-60 px-6 md:px-12 bg-gradient-to-b from-[#001F3F] to-[#001F3F] text-white">
             <div className="max-w-5xl mx-auto">
                 <div className="flex items-center gap-6 mb-12">
                     <div className="w-16 h-1.5 bg-[#FF6B00] rounded-full" />

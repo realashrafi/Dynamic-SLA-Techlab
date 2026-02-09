@@ -49,7 +49,7 @@ const colors = {
 
 export default function TrendChartSection() {
     return (
-        <section className="py-20 px-6 md:px-12 bg-[#001F3F] text-white">
+        <section className="py-60 px-6 md:px-12 bg-[#001F3F] text-white">
             <div className="max-w-6xl mx-auto">
                 {/* عنوان */}
                 <div className="flex items-center gap-6 mb-12">
@@ -79,8 +79,8 @@ export default function TrendChartSection() {
                     <ResponsiveContainer width="100%" height="100%">
                         <LineChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                             <CartesianGrid strokeDasharray="3 3" stroke="#FFFFFF20" />
-                            <XAxis dataKey="week" stroke="#FFFFFF80" label={{ value: 'شماره هفته', position: 'insideBottom', fill: '#FFFFFF', offset: -5 }} />
-                            <YAxis stroke="#FFFFFF80" domain={[50,105]} label={{ value: 'درصد پایبندی به تعهد', angle: -90, position: 'insideLeft', fill: '#FFFFFF' }} />
+                            <XAxis dataKey="week" stroke="#FFFFFF80" label={{ value: 'شماره هفته', position: 'insideBottomLeft', fill: '#FFFFFF', offset: -2,dx:80 }} />
+                            <YAxis stroke="#FFFFFF80" domain={[50,100]} label={{ value: 'درصد پایبندی به تعهد', angle: -90, position: 'insideLeft', fill: '#FFFFFF' }} />
                             <Tooltip
                                 contentStyle={{ backgroundColor: '#0A2540', border: '1px solid #FF6B00', borderRadius: '8px', color: 'white' }}
                                 labelStyle={{ color: '#FF6B00' }}
@@ -90,7 +90,7 @@ export default function TrendChartSection() {
                             <Line type="monotone" dataKey="tehran" stroke={colors.tehran} strokeWidth={3} dot={{ r: 2, fill: colors.tehran }} name="تهران" />
                             <Line type="monotone" dataKey="tabriz" stroke={colors.tabriz} strokeWidth={3} dot={{ r: 2, fill: colors.tabriz }} name="تبریز" />
                             <Line type="monotone" dataKey="qom" stroke={colors.qom} strokeWidth={3} dot={{ r: 2, fill: colors.qom }} name="قم" />
-                            <Line type="monotone" dataKey="average" stroke={colors.average} strokeWidth={3} strokeDasharray="2 2" dot={{ r: 2 }} name="میانگین" />
+                            <Line type="monotone" dataKey="average"  stroke={colors.average} strokeWidth={3} strokeDasharray="2 2" dot={{ r: 2 }} name="کل" />
                         </LineChart>
                     </ResponsiveContainer>
                 </motion.div>

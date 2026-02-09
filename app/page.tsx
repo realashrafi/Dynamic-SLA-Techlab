@@ -14,6 +14,7 @@ import FactorsSection from "@/app/components/FactorsSection";
 import SolutionArchitecture from "@/app/components/SolutionArchitecture";
 import QuestionsAndThankYou from "@/app/components/QuestionsAndThankYou";
 import DynamicDashboardSection from "@/app/components/DynamicDashboardSection";
+import SlaFlowDiagram from "@/app/components/SlaFlowDiagram";
 
 const staggerContainer = {
     hidden: { opacity: 1 },
@@ -44,6 +45,7 @@ export default function Home() {
             <TrendChartSection/>
             <PathChartsSection/>
             <FactorsSection/>
+            <SlaFlowDiagram/>
             <DynamicDashboardSection/>
             <SolutionArchitecture/>
         </main>

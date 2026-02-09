@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 
 export default function AnalysisMethod() {
     return (
-        <section className="py-20 px-6 md:px-12 bg-gradient-to-br from-[#0A2540] via-[#001F3F] to-[#001F3F] text-white overflow-hidden">
+        <section className="py-70 px-6 md:px-12 bg-gradient-to-br from-[#0A2540] via-[#001F3F] to-[#001F3F] text-white overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 {/* عنوان با فلش */}
                 <div className="flex items-center gap-6 mb-12 md:mb-16">
@@ -73,7 +73,7 @@ export default function AnalysisMethod() {
                     >
                         {/* تصویر اصلی (ترکیب کامیون + برج آزادی) */}
                         <img
-                            src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80"
+                            src="/TpaxSla.png"
                             alt="Dynamic SLA Tipax - کامیون تیپاکس در مقابل برج آزادی"
                             className="w-full h-[400px] object-cover brightness-90 contrast-110"
                         />

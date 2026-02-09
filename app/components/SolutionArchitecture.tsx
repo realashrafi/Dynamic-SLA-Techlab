@@ -39,7 +39,7 @@ const rightBoxVariants = {
 
 export default function SolutionArchitecture() {
     return (
-        <section className="py-20 px-6 md:px-12 bg-gradient-to-br from-[#001F3F] to-[#001F3F] text-white relative overflow-hidden">
+        <section className="py-60 px-6 md:px-12 bg-gradient-to-br from-[#001F3F] to-[#001F3F] text-white relative overflow-hidden">
             {/* گرادیان پس‌زمینه ملایم */}
             <div className="absolute inset-0 opacity-10 pointer-events-none">
                 <div className="w-full h-full bg-gradient-to-tr from-[#FF6B00]/5 to-transparent" />

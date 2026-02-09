@@ -8,7 +8,7 @@ const factors = [
     { text: 'پاندمی‌های خاص مانند کرونا', icon: '🦠' },
     { text: 'تاثیرات فصلی (seasonal effect) مانند سال نو یا ماه رمضان', icon: '🍂' },
     { text: 'رفتارهای همسو با اتفاقات اجتماعی نظیر خرید سال جدید تحصیلی', icon: '🎒' },
-    { text: 'مرسوله‌های دارویی در طول روز و کشش تیم عملیاتی', icon: '💊' },
+    { text: ' تعداد مرسوله های دریافتی در طول روز و کشش تیم عملیات', icon: '📦' },
     { text: 'نوسانات قیمت ارز در سال ۱۴۰۴ و پیامدهای آن نظیر نوسانات پس از جنگ ۱۲ روزه', icon: '💹' },
     { text: 'شرایط اقلیمی و آب و هوایی مناطق تحویل و جابجایی مرسوله‌ها', icon: '🌧️' },
 ]
@@ -28,7 +28,7 @@ const factorVariants = {
 
 export default function FactorsSection() {
     return (
-        <section className="py-20 px-6 md:px-12 bg-[#001F3F] text-white relative overflow-hidden">
+        <section className="py-60 px-6 md:px-12 bg-[#001F3F] text-white relative overflow-hidden">
             {/* گرادیان ملایم برای عمق */}
             <div className="absolute inset-0 opacity-15 pointer-events-none">
                 <div className="w-full h-full bg-gradient-to-br from-[#FF6B00]/10 to-transparent" />
@@ -43,7 +43,7 @@ export default function FactorsSection() {
                         transition={{ duration: 0.9 }}
                         className="w-16 h-1.5 bg-[#FF6B00] rounded-full"
                     />
-                    <h2 className="text-3xl md:text-5xl font-bold text-[#FF6B00] text-center">
+                    <h2 className="text-3xl md:text-4xl font-bold text-[#FF6B00] text-center">
                         فاکتورهایی که بیشترین اثر را بر تحقق SLA دارند
                     </h2>
                 </div>

@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 
 export default function BenefitsSection() {
     return (
-        <section className="py-20 px-6 md:px-12 bg-gradient-to-b from-[#001F3F] via-[#FF8C00] to-[#001F3F] text-white relative overflow-hidden">
+        <section className="py-60 px-6 md:px-12 bg-gradient-to-b from-[#001F3F] via-[#FF8C00] to-[#001F3F] text-white relative overflow-hidden">
             {/* الگوی subtle نارنجی */}
             <div className="absolute inset-0 opacity-10 pointer-events-none">
                 <div className="w-full h-full bg-[radial-gradient(circle_at_30%_70%,#ffffff22_0%,transparent_60%)]" />

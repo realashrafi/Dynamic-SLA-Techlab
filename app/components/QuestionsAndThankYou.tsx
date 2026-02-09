@@ -9,7 +9,7 @@ const questions = [
     'چه عواملی بیشترین اثر را بر تحقق SLA دارند؟',
     'SLA داینامیک در شرایط بحرانی چه ارزشی ایجاد می‌کند؟',
     'مالک تصمیم SLA در سازمان کیست؟',
-    'وضعیت بلوغ فعلی سازمان در SLA داینامیک چگونه است؟',
+    'آمادگی سازمان برای اجرای dynamic SLA چقدر است؟',
     'پیامد قراردادی و حقوقی SLA داینامیک چیست؟',
 ]
 
@@ -67,9 +67,9 @@ export default function QuestionsAndThankYou() {
                         ))}
                     </div>
 
-                    <div className="mt-12 text-center opacity-80 text-base">
-                        آماده پاسخگویی به تمام سوالات شما هستیم!
-                    </div>
+                    {/*<div className="mt-12 text-center opacity-80 text-base">*/}
+                    {/*    آماده پاسخگویی به تمام سوالات شما هستیم!*/}
+                    {/*</div>*/}
                 </div>
             </section>
 

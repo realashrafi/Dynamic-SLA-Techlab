@@ -5,13 +5,13 @@ import { motion } from 'framer-motion'
 
 const rows = [
     { title: 'وضعیت فعلی', desc: 'وجود شکاف بین SLA اعلام شده و عملکرد واقعی شبکه در بخشی از مسیرها' },
-    { title: 'مسئله اصلی', desc: 'کاهش رضایتمندی مشتری به دلیل تاخیر در SLA تعهد شده + کاهش اعتماد به SLA به‌عنوان شاخص پایش + افزایش زیان مالی در اثر از دست رفتن خدمات same day + آسیب به برند تیپاکس' },
+    { title: 'مسئله اصلی', desc: 'کاهش رضایتمندی مشتری به دلیل تاخیر در SLA تعهد شده + کاهش سود از دست رفته در اثر از دست رفتن خدمات same day + آسیب به برند تیپاکس' },
     { title: 'راهکار', desc: 'طراحی مدل SLA دینامیک مبتنی بر تحلیل پیشرفته داده های تیپاکس' },
 ]
 
 export default function ExecSummary() {
     return (
-        <section className="py-20 px-6 md:px-12 bg-[#001F3F] text-white">
+        <section className="py-70 px-6 md:px-12  bg-[#001F3F] text-white">
             <div className="max-w-6xl mx-auto">
                 <div className="flex items-center gap-6 mb-12">
                     <motion.div

@@ -40,7 +40,7 @@ const rowVariants = {
 
 export default function ComparisonTable() {
     return (
-        <section className="py-20 px-6 md:px-12 bg-[#001F3F] text-white">
+        <section className="py-50 px-6 md:px-12 bg-[#001F3F] text-white">
             <div className="max-w-[1400px] mx-auto">
                 {/* عنوان */}
                 <div className="flex items-center gap-6 mb-12">
@@ -56,7 +56,7 @@ export default function ComparisonTable() {
                 </div>
 
                 <p className="text-lg md:text-xl opacity-90 mb-10">
-                    تمرکز بر مسیرهای با بیشترین حجم مرسوله — مبنا: مد زمان تحویل — بازه: هفته‌های ۱ تا ۳۲ سال ۱۴۰۳
+                    تمرکز بر مسیرهای با بیشترین حجم مرسوله — مبنا: مد زمان تحویل — بازه: هفته‌های ۱ تا ۳۲ سال ۱۴۰4
                 </p>
 
                 {/* جدول */}
