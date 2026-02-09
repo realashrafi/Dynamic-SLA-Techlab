@@ -19,6 +19,147 @@ import { dataModel } from '@/app/components/dataModel'
 
 const cities = ['تهران', 'اصفهان', 'رشت']
 
+// ---------------- Jalali date helpers (NO Gregorian conversion) ----------------
+
+// leap year check (jalaali-js style)
+function div(a: number, b: number) { return Math.floor(a / b) }
+function mod(a: number, b: number) { return a - Math.floor(a / b) * b }
+
+function jalCal(jy: number) {
+    const breaks = [
+        -61, 9, 38, 199, 426, 686, 756, 818, 1111, 1181, 1210,
+        1635, 2060, 2097, 2192, 2262, 2324, 2394, 2456, 3178,
+    ]
+
+    const bl = breaks.length
+    let leapJ = -14
+    let jp = breaks[0]
+    let jm = 0
+    let jump = 0
+    let n = 0
+
+    if (jy < jp || jy >= breaks[bl - 1]) {
+        throw new Error('Invalid Jalali year ' + jy)
+    }
+
+    for (let i = 1; i < bl; i += 1) {
+        jm = breaks[i]
+        jump = jm - jp
+        if (jy < jm) break
+        leapJ = leapJ + div(jump, 33) * 8 + div(mod(jump, 33), 4)
+        jp = jm
+    }
+
+    n = jy - jp
+    leapJ = leapJ + div(n, 33) * 8 + div(mod(n, 33) + 3, 4)
+
+    if (mod(jump, 33) === 4 && jump - n === 4) leapJ += 1
+
+    let leap = mod(mod(n + 1, 33) - 1, 4)
+    if (leap === -1) leap = 4
+
+    return { leap }
+}
+
+function isJalaliLeapYear(jy: number) {
+    return jalCal(jy).leap === 0
+}
+
+function jalaliMonthLength(jy: number, jm: number) {
+    if (jm <= 6) return 31
+    if (jm <= 11) return 30
+    return isJalaliLeapYear(jy) ? 30 : 29
+}
+
+function pad2(n: number) {
+    return String(n).padStart(2, '0')
+}
+
+// add days in Jalali calendar (safe, deterministic)
+function addDaysJalali(jy: number, jm: number, jd: number, deltaDays: number) {
+    let y = jy
+    let m = jm
+    let d = jd
+    let remaining = deltaDays
+
+    while (remaining > 0) {
+        const ml = jalaliMonthLength(y, m)
+        const leftInMonth = ml - d
+
+        if (remaining <= leftInMonth) {
+            d += remaining
+            remaining = 0
+        } else {
+            remaining -= (leftInMonth + 1)
+            d = 1
+            m += 1
+
+            if (m > 12) {
+                m = 1
+                y += 1
+            }
+        }
+    }
+
+    return { jy: y, jm: m, jd: d }
+}
+
+function formatJalali(j: { jy: number; jm: number; jd: number }) {
+    return `${j.jy}/${pad2(j.jm)}/${pad2(j.jd)}`
+}
+
+// ------------------------------------------------------------------
+// Week logic (Calendar Week: Saturday -> Friday)
+// week 1 may have less than 7 days depending on weekday of Farvardin 1
+// ------------------------------------------------------------------
+
+// DayOfWeekIndex: Shanbeh=0 ... Jomeh=6
+type DayOfWeekIndex = 0 | 1 | 2 | 3 | 4 | 5 | 6
+
+function makeWeekLabelFromTimeKey(wk: string) {
+    const m = String(wk).match(/\d+/)
+    const weekNum = m ? parseInt(m[0], 10) : 1
+
+    // ===============================
+    // CONFIG (Based on your calendar)
+    // ===============================
+
+    // Start of year for label system
+    const yearStart = { jy: 1404, jm: 1, jd: 1 }
+
+    // Weekday of 1404/01/01 (طبق تقویم شما)
+    // شنبه = 0 ... جمعه = 6
+    const yearStartDayIndex: DayOfWeekIndex = 6
+
+    // ===============================
+    // CALCULATION
+    // ===============================
+
+    // how many days left until friday in week 1
+    const daysToFriday = 6 - yearStartDayIndex
+
+    // week 1 length (could be 1..7)
+    const week1Length = daysToFriday + 1
+
+    let start
+    let end
+
+    if (weekNum === 1) {
+        start = yearStart
+        end = addDaysJalali(yearStart.jy, yearStart.jm, yearStart.jd, daysToFriday)
+    } else {
+        // days passed from start of year to start of weekNum
+        const daysPassed = week1Length + (weekNum - 2) * 7
+
+        start = addDaysJalali(yearStart.jy, yearStart.jm, yearStart.jd, daysPassed)
+        end = addDaysJalali(start.jy, start.jm, start.jd, 6)
+    }
+
+    return `Week ${weekNum} (${formatJalali(start)} - ${formatJalali(end)})`
+}
+
+
+
 export default function DynamicSlaDashboardSection() {
     const [origin, setOrigin] = useState<string | null>(null)
     const [destination, setDestination] = useState<string | null>(null)
@@ -139,7 +280,7 @@ export default function DynamicSlaDashboardSection() {
 
                                 {availableWeeks.map((wk) => (
                                     <option key={wk} value={wk}>
-                                        {wk}
+                                        {makeWeekLabelFromTimeKey(wk)}
                                     </option>
                                 ))}
                             </select>
