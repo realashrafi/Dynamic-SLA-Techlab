@@ -1,7 +1,7 @@
 // app/page.tsx
 'use client'
 
-import { motion } from 'framer-motion'
+import {motion} from 'framer-motion'
 import Hero from "@/app/components/Hero";
 import ExecSummary from "@/app/components/ExecSummary";
 import ProblemSection from "@/app/components/ProblemSection";
@@ -15,20 +15,23 @@ import SolutionArchitecture from "@/app/components/SolutionArchitecture";
 import QuestionsAndThankYou from "@/app/components/QuestionsAndThankYou";
 import DynamicDashboardSection from "@/app/components/DynamicDashboardSection";
 import SlaFlowDiagram from "@/app/components/SlaFlowDiagram";
+import Image from "next/image";
+import Header from "@/app/components/Header";
 
 const staggerContainer = {
-    hidden: { opacity: 1 },
+    hidden: {opacity: 1},
     visible: {
         opacity: 1,
-        transition: { staggerChildren: 0.18 },
+        transition: {staggerChildren: 0.18},
     },
 }
 
 export default function Home() {
     return (
         <main className="bg-[#0A1F44] text-white overflow-x-hidden">
+            <Header/>
             {/* Hero – full screen, no motion section wrapper */}
-            <Hero />
+            <Hero/>
             <motion.div
                 variants={staggerContainer}
                 initial="hidden"
@@ -36,8 +39,8 @@ export default function Home() {
                 className="relative z-10"
             >
             </motion.div>
-            <ExecSummary  />
-            <ProblemSection />
+            <ExecSummary/>
+            <ProblemSection/>
             <QuestionsAndThankYou/>
             <BenefitsSection/>
             <AnalysisMethod/>

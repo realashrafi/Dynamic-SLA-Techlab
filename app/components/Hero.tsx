@@ -27,7 +27,7 @@ export default function Hero() {
                     <span className="text-[#FF6B00] block mt-4">در شبکه لجستیک تیپاکس</span>
                 </h1>
 
-                <p className="text-2xl md:text-4xl font-medium mb-4 opacity-90">
+                <p className="text-2xl mt-30 md:text-4xl font-medium mb-4 opacity-90">
                     «از چالش تا راه‌حل!»
                 </p>
 

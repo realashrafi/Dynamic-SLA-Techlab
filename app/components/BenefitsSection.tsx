@@ -36,7 +36,7 @@ export default function BenefitsSection() {
                             initial={{ opacity: 0, x: -80 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ duration: 1, delay: 0.2 }}
-                            className="bg-white/20 backdrop-blur-lg rounded-2xl p-8 border border-white/30 shadow-2xl"
+                            className="bg-white/20 backdrop-blur-lg rounded-2xl p-8 border border-white/30 shadow-2xl hover:translate-y-8 hover:scale-110 transition-all duration-200 ease-in-out"
                         >
                             <h3 className="text-2xl md:text-3xl font-bold mb-6 text-center text-white">
                                 لایه تجربه مشتری
@@ -62,22 +62,22 @@ export default function BenefitsSection() {
                             initial={{ opacity: 0, y: 60 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1, delay: 0.4 }}
-                            className="bg-white/25 backdrop-blur-xl rounded-3xl p-10 border-2 border-white/40 shadow-2xl md:scale-110 md:z-10"
+                            className="bg-white/25 backdrop-blur-xl rounded-3xl p-10 border-2 border-white/40 shadow-2xl md:scale-110 md:z-10 hover:translate-y-8 hover:scale-110 transition-all duration-200 ease-in-out"
                         >
-                            <h3 className="text-3xl md:text-4xl font-extrabold mb-8 text-center text-white">
+                            <h3 className="text-2xl md:text-3xl font-extrabold mb-8 text-center text-white">
                                 لایه برند و فروش تیپاکس
                             </h3>
                             <ul className="space-y-6 text-xl leading-relaxed">
                                 <li className="flex items-start gap-4">
-                                    <span className="text-3xl">•</span>
+                                    <span className="text-2xl">•</span>
                                     تقویت اعتبار برند با تعهدات داده‌محور و واقع‌بینانه
                                 </li>
                                 <li className="flex items-start gap-4">
-                                    <span className="text-3xl">•</span>
+                                    <span className="text-2xl">•</span>
                                     ارتقای SLA به ابزار فروش و مزیت رقابتی
                                 </li>
                                 <li className="flex items-start gap-4">
-                                    <span className="text-3xl">•</span>
+                                    <span className="text-2xl">•</span>
                                     بهبود درآمد از طریق قیمت‌گذاری متناسب خدمات Same-Day
                                 </li>
                             </ul>
@@ -88,7 +88,7 @@ export default function BenefitsSection() {
                             initial={{ opacity: 0, x: 80 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ duration: 1, delay: 0.6 }}
-                            className="bg-white/20 backdrop-blur-lg rounded-2xl p-8 border border-white/30 shadow-2xl"
+                            className="bg-white/20 backdrop-blur-lg rounded-2xl p-8 border border-white/30 shadow-2xl hover:translate-y-8 hover:scale-110 transition-all duration-200 ease-in-out"
                         >
                             <h3 className="text-2xl md:text-3xl font-bold mb-6 text-center text-white">
                                 لایه سازمان و عملیات

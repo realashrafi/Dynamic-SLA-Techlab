@@ -4,9 +4,9 @@
 import { motion } from 'framer-motion'
 
 const rows = [
-    { title: 'وضعیت فعلی', desc: 'وجود شکاف بین SLA اعلام شده و عملکرد واقعی شبکه در بخشی از مسیرها' },
-    { title: 'مسئله اصلی', desc: 'کاهش رضایتمندی مشتری به دلیل تاخیر در SLA تعهد شده + کاهش سود از دست رفته در اثر از دست رفتن خدمات same day + آسیب به برند تیپاکس' },
-    { title: 'راهکار', desc: 'طراحی مدل SLA دینامیک مبتنی بر تحلیل پیشرفته داده های تیپاکس' },
+    { title: 'وضعیت فعلی', desc: ['وجود شکاف بین SLA اعلام شده و عملکرد واقعی شبکه در بخشی از مسیرها'] },
+    { title: 'مسئله اصلی', desc: ['کاهش رضایتمندی مشتری به دلیل تاخیر در SLA تعهد شده','کاهش سود از دست رفته در اثر از دست رفتن خدمات same day' ,'آسیب به برند تیپاکس'] },
+    { title: 'راهکار', desc: ['طراحی مدل SLA دینامیک مبتنی بر تحلیل پیشرفته داده های تیپاکس'] },
 ]
 
 export default function ExecSummary() {
@@ -28,16 +28,30 @@ export default function ExecSummary() {
                 <div className="overflow-x-auto rounded-xl border border-[#FF6B00]/30">
                     <table className="w-full text-right">
                         <thead>
-                        <tr className="bg-[#FF6B00]/80 text-black">
+                        <tr className="bg-[#FF6B00]/80 text-center text-black">
                             <th className="p-5 font-bold border-l border-black/20">عنوان</th>
                             <th className="p-5 font-bold">توضیح</th>
                         </tr>
                         </thead>
                         <tbody>
                         {rows.map((row, i) => (
-                            <tr key={i} className={`${i % 2 ? 'bg-white/5' : 'bg-white/10'} border-b border-[#FF6B00]/20 hover:bg-white/15 transition-colors`}>
-                                <td className="p-5 border-l border-[#FF6B00]/20 font-semibold">{row.title}</td>
-                                <td className="p-5 leading-relaxed">{row.desc}</td>
+                            <tr
+                                key={i}
+                                className={`${i % 2 ? 'bg-white/5' : 'bg-white/10'} border-b border-[#FF6B00]/20 hover:bg-white/15 transition-colors`}
+                            >
+                                <td className="p-5 border-l text-center border-[#FF6B00]/20 font-semibold">
+                                    {row.title}
+                                </td>
+
+                                <td className="p-5">
+                                    <ul className="list-disc px-6 space-y-1.5 marker:text-[#FF6B00]">
+                                        {row.desc.map((desc, idx) => (
+                                            <li key={idx} className="leading-relaxed">
+                                                {desc}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </td>
                             </tr>
                         ))}
                         </tbody>
