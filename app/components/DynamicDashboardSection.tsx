@@ -16,6 +16,7 @@ import {
     ReferenceLine,
 } from 'recharts'
 import { dataModel } from '@/app/components/dataModel'
+import RouteMap from '@/app/components/RouteMap'
 
 const cities = ['تهران', 'اصفهان', 'رشت', 'کرمانشاه', 'ارومیه', 'مهاباد', 'ابوموسی']
 
@@ -157,8 +158,6 @@ function makeWeekLabelFromTimeKey(wk: string) {
 
     return `Week ${weekNum} (${formatJalali(start)} - ${formatJalali(end)})`
 }
-
-
 
 export default function DynamicSlaDashboardSection() {
     const [origin, setOrigin] = useState<string | null>(null)
@@ -314,9 +313,9 @@ export default function DynamicSlaDashboardSection() {
                     className="bg-[#001F3F]/60 backdrop-blur-md border border-[#FF6B00]/30 rounded-2xl p-6 md:p-8 shadow-2xl min-h-[500px]"
                 >
                     {activeTab === 'overview' ? (
-                        <div className="grid grid-cols-1 lg:grid-cols-5 gap-7 lg:gap-10">
+                        <div className="grid grid-cols-1 lg:grid-cols-6 gap-7 lg:gap-10">
                             {/* کارت Current SLA */}
-                            <div className="lg:col-span-2 flex items-stretch">
+                            <div className="lg:col-span-6 flex items-stretch">
                                 {currentData ? (
                                     <motion.div
                                         initial={{ opacity: 0, x: -40 }}
@@ -451,7 +450,7 @@ export default function DynamicSlaDashboardSection() {
                                     initial={{ opacity: 0, x: 40 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ duration: 0.7, delay: 0.2 }}
-                                    className="relative overflow-hidden rounded-3xl border border-[#FF6B00]/35 bg-gradient-to-br from-[#0A2540] to-[#0A1F44] p-6 lg:p-8 shadow-[0_18px_60px_rgba(0,0,0,0.55)] h-full"
+                                    className="relative overflow-hidden rounded-3xl border border-[#FF6B00]/35 bg-gradient-to-br from-[#0A2540]  to-[#0A1F44] p-6 lg:p-2 shadow-[0_18px_60px_rgba(0,0,0,0.55)] h-full"
                                 >
                                     {/* Glow / Glass */}
                                     <div className="absolute inset-0 bg-white/5 backdrop-blur-md" />
@@ -460,7 +459,7 @@ export default function DynamicSlaDashboardSection() {
 
                                     <div className="relative z-10 h-full flex flex-col">
                                         {/* Header */}
-                                        <div className="flex items-center justify-between gap-4 mb-6">
+                                        <div className="flex mx-6 mt-6 items-center justify-between gap-4 mb-6">
                                             <div>
                                                 <h4 className="text-2xl md:text-3xl font-black text-[#FF6B00] tracking-tight">
                                                     Actual Delivery Times
@@ -476,7 +475,7 @@ export default function DynamicSlaDashboardSection() {
                                         </div>
 
                                         {/* Chart Body */}
-                                        <div className="h-[380px] md:h-[420px] lg:h-[480px] rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
+                                        <div className="h-[380px] md:h-[420px] lg:h-[480px] rounded-2xl overflow-hidden">
                                             {currentData ? (
                                                 <div className="w-full h-full p-3 md:p-4">
                                                     <ResponsiveContainer width="100%" height="100%">
@@ -542,12 +541,13 @@ export default function DynamicSlaDashboardSection() {
                                     </div>
                                 </motion.div>
                             </div>
-                            <div className="lg:col-span-5">
+
+                            <div className="lg:col-span-3">
                                 <motion.div
-                                    initial={{ opacity: 0, y:30 }}
+                                    initial={{ opacity: 0, y: 30 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.7, delay: 0.2 }}
-                                    className="relative overflow-hidden rounded-3xl border border-[#FF6B00]/35 bg-gradient-to-br from-[#0A2540] to-[#0A1F44] p-6 lg:p-8 shadow-[0_18px_60px_rgba(0,0,0,0.55)] h-full"
+                                    className="relative overflow-hidden rounded-3xl border border-[#FF6B00]/35 bg-gradient-to-br from-[#0A2540] to-[#0A1F44] p-6 lg:p-2 shadow-[0_18px_60px_rgba(0,0,0,0.55)] h-full"
                                 >
                                     {/* Glow / Glass */}
                                     <div className="absolute inset-0 bg-white/5 backdrop-blur-md" />
@@ -556,7 +556,7 @@ export default function DynamicSlaDashboardSection() {
 
                                     <div className="relative z-10 h-full flex flex-col">
                                         {/* Header */}
-                                        <div className="flex items-center justify-between gap-4 mb-6">
+                                        <div className="flex items-center justify-between gap-4 mb-6 mx-6 mt-6">
                                             <div>
                                                 <h4 className="text-2xl md:text-3xl font-black text-[#FF6B00] tracking-tight">
                                                     Shipments Amount
@@ -572,7 +572,7 @@ export default function DynamicSlaDashboardSection() {
                                         </div>
 
                                         {/* Chart Body */}
-                                        <div className="h-[380px] md:h-[420px] lg:h-[480px] rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
+                                        <div className="h-[380px] md:h-[420px] lg:h-[480px] rounded-2xl overflow-hidden">
                                             {currentData ? (
                                                 <div className="w-full h-full p-3 md:p-4">
                                                     <ResponsiveContainer width="100%" height="100%">
@@ -773,11 +773,11 @@ export default function DynamicSlaDashboardSection() {
                                         </div>
 
                                         <div className="h-[340px] md:h-[380px] lg:h-[420px] rounded-2xl overflow-hidden relative border border-white/10">
-                                            {currentData?.performance?.image ? (
-                                                <img
-                                                    src={currentData.performance.image}
-                                                    alt="نقشه مسیر"
-                                                    className="w-full h-full object-cover scale-[1.02]"
+                                            {selectedPath?.originlat && selectedPath?.originlong && selectedPath?.destinationlat && selectedPath?.destinationlong ? (
+                                                <RouteMap
+                                                    origin={{ lat: selectedPath.originlat, lng: selectedPath.originlong }}
+                                                    destination={{ lat: selectedPath.destinationlat, lng: selectedPath.destinationlong }}
+                                                    height={420}
                                                 />
                                             ) : (
                                                 <div className="h-full flex items-center justify-center text-lg opacity-70 bg-[#0A2540]/50">
@@ -883,7 +883,6 @@ export default function DynamicSlaDashboardSection() {
 
                     ) : (
                         <div className="space-y-10 lg:space-y-12">
-
                             {/* کارت خلاصه ریسک واقعی */}
                             <motion.div
                                 initial={{ opacity: 0, y: -30 }}
@@ -978,7 +977,6 @@ export default function DynamicSlaDashboardSection() {
 
                             {/* چارت‌های ریسک */}
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-7 lg:gap-10">
-
                                 {/* چارت ریسک واقعی */}
                                 <motion.div
                                     initial={{ opacity: 0, x: -30 }}
@@ -1151,7 +1149,6 @@ export default function DynamicSlaDashboardSection() {
 
                             {/* هشدارها و نقشه بغل هم */}
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-7 lg:gap-10">
-
                                 {/* لیست هشدارها */}
                                 <motion.div
                                     initial={{ opacity: 0, x: -30 }}
@@ -1230,11 +1227,11 @@ export default function DynamicSlaDashboardSection() {
                                         </div>
 
                                         <div className="h-[340px] md:h-[380px] lg:h-[420px] rounded-2xl overflow-hidden relative border border-white/10">
-                                            {currentData?.risk?.image ? (
-                                                <img
-                                                    src={currentData.risk.image}
-                                                    alt="نقشه ریسک"
-                                                    className="w-full h-full object-cover scale-[1.02]"
+                                            {selectedPath?.originlat && selectedPath?.originlong && selectedPath?.destinationlat && selectedPath?.destinationlong ? (
+                                                <RouteMap
+                                                    origin={{ lat: selectedPath.originlat, lng: selectedPath.originlong }}
+                                                    destination={{ lat: selectedPath.destinationlat, lng: selectedPath.destinationlong }}
+                                                    height={420}
                                                 />
                                             ) : (
                                                 <div className="h-full flex items-center justify-center text-lg opacity-70 bg-[#0A2540]/50">

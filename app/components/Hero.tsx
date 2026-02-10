@@ -17,8 +17,8 @@ export default function Hero() {
                 className="relative z-10 max-w-5xl"
             >
                 {/* لوگو nona – اگر svg داری جایگزین کن */}
-                <div className="text-8xl md:text-9xl font-black tracking-tight mb-8">
-                    <Image src={'/NonaLogo.png'} width={700} className={'mx-auto'} height={200} alt={'نونا'}/>
+                <div className="text-8xl mt-70 md:text-9xl font-black tracking-tight mb-8">
+                    <Image src={'/NonaLogo.png'} width={500} className={'mx-auto'} height={200} alt={'نونا'}/>
                 </div>
 
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 text-white">
@@ -36,16 +36,16 @@ export default function Hero() {
                 </p>
             </motion.div>
 
-            <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1, duration: 1, ease: easeOut }}
-                className="absolute bottom-16"
-            >
-                <svg className="w-12 h-12 text-[#FF6B00] animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                </svg>
-            </motion.div>
+            {/*<motion.div*/}
+            {/*    initial={{ opacity: 0, y: 50 }}*/}
+            {/*    animate={{ opacity: 1, y: 0 }}*/}
+            {/*    transition={{ delay: 1, duration: 1, ease: easeOut }}*/}
+            {/*    className="absolute bottom-16"*/}
+            {/*>*/}
+            {/*    <svg className="w-12 h-12 text-[#FF6B00] animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">*/}
+            {/*        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />*/}
+            {/*    </svg>*/}
+            {/*</motion.div>*/}
         </section>
     )
 }

@@ -5,9 +5,28 @@ import { motion } from 'framer-motion'
 import { easeOut } from 'framer-motion'
 
 const leftPoints = [
-    'اتکا به تحلیل سری‌های زمانی برای استخراج الگوهای رفتاری SLA',
-    'استفاده از مدل‌های سبک تحلیلی (SLM) برای ارزیابی اثر متغیرها',
-    'ارائه راهکار به صورت پلتفرم با افزونه در سیستم‌های سازمانی تیپاکس',
+    {
+        id:1,
+        title:'پیشنهاد SLA بهینه برای هر مسیر\n',
+        description:' تعیین SLA پیشنهادی بر اساس رفتار واقعی شبکه و الگوهای تاریخی هر مبدا–مقصد',
+    },
+    {
+        id:2,
+        title:'پیش‌بینی عددی نرخ تحقق SLA\n',
+        description:' برآورد احتمال پایبندی به SLA برای تصمیم‌گیری دقیق‌تر در تعهددهی',
+    },{
+        id:3,
+        title:'هشدار پیشگیرانه ریسک نقض SLA\n',
+        description:' شناسایی زودهنگام مسیرهای پرریسک قبل از وقوع تأخیر و نقض تعهد',
+    },{
+        id:4,
+        title:'پیشنهاد اقدام عملیاتی مشخص (Actionable Recommendation)',
+        description:' ارائه اقدام‌های قابل اجرا برای کاهش ریسک (اولویت‌دهی، تغییر سرویس، تخصیص ظرفیت)\n',
+    },{
+        id:5,
+        title:'خروجی سیستم‌محور و قابل تزریق\n',
+        description:' تولید خروجی قابل استفاده در سیستم‌های عملیاتی از طریق داشبورد یا API\n',
+    },
 ]
 
 const rightPoints = [
@@ -54,7 +73,7 @@ export default function SolutionArchitecture() {
                     className="text-center mb-16"
                 >
                     <h2 className="text-4xl md:text-6xl font-black text-[#FF6B00] drop-shadow-lg">
-                        راهکار تکلیف + معماری پیشنهادی
+                        راهکار تک لب
                     </h2>
                     <p className="text-xl md:text-2xl mt-4 opacity-90">
                         SLA داینامیک مبتنی بر داده + کنترل هوشمند + هشدار بلادرنگ
@@ -65,56 +84,59 @@ export default function SolutionArchitecture() {
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
-                    className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-start"
+                    className="grid grid-cols-1 lg:grid-cols-1 gap-12 md:gap-20 items-start"
                 >
                     {/* ستون چپ: تحلیل داده‌ای */}
                     <motion.div variants={boxVariants} className="bg-white/10 backdrop-blur-lg border border-[#FF6B00]/40 rounded-2xl p-8 md:p-10 shadow-2xl">
-                        <h3 className="text-2xl md:text-3xl font-bold text-[#FF6B00] mb-8 text-center">
-                            امکان طراحی SLA داینامیک مبتنی بر شواهد داده‌ای
-                        </h3>
+                        {/*<h3 className="text-2xl md:text-3xl font-bold text-[#FF6B00] mb-8 text-center">*/}
+                        {/*    امکان طراحی SLA داینامیک مبتنی بر شواهد داده‌ای*/}
+                        {/*</h3>*/}
 
                         <ul className="space-y-6 text-lg md:text-xl leading-relaxed">
-                            {leftPoints.map((point, i) => (
+                            {leftPoints.map((item, i) => (
                                 <li key={i} className="flex items-start gap-4">
                   <span className="flex-shrink-0 w-10 h-10 rounded-full bg-[#FF6B00]/80 text-black font-bold flex items-center justify-center text-xl">
                     {i + 1}
                   </span>
-                                    <span>{point}</span>
+                                    <div className={'flex items-start justify-center flex-col text-right'}>
+                                        <span className={'font-bold'}>{item.title}</span>
+                                        <span className={'text-[15px]'}>{item.description}</span>
+                                    </div>
                                 </li>
                             ))}
                         </ul>
                     </motion.div>
 
                     {/* ستون راست: کنترل انطباق + سامانه هشدار */}
-                    <motion.div variants={rightBoxVariants} className="bg-white/10 backdrop-blur-lg border border-[#FF6B00]/40 rounded-2xl p-8 md:p-10 shadow-2xl">
-                        <h3 className="text-2xl md:text-3xl font-bold text-[#FF6B00] mb-8 text-center">
-                            کنترل انطباق چندسطحی + سامانه هشداردهنده SLA
-                        </h3>
+                  {/*  <motion.div variants={rightBoxVariants} className="bg-white/10 backdrop-blur-lg border border-[#FF6B00]/40 rounded-2xl p-8 md:p-10 shadow-2xl">*/}
+                  {/*      <h3 className="text-2xl md:text-3xl font-bold text-[#FF6B00] mb-8 text-center">*/}
+                  {/*          کنترل انطباق چندسطحی + سامانه هشداردهنده SLA*/}
+                  {/*      </h3>*/}
 
-                        <ul className="space-y-6 text-lg md:text-xl leading-relaxed">
-                            {rightPoints.map((point, i) => (
-                                <li key={i} className="flex items-start gap-4">
-                  <span className="flex-shrink-0 w-10 h-10 rounded-full bg-[#FF6B00]/80 text-black font-bold flex items-center justify-center text-xl">
-                    {i + 1}
-                  </span>
-                                    <span>{point}</span>
-                                </li>
-                            ))}
-                        </ul>
-                    </motion.div>
+                  {/*      <ul className="space-y-6 text-lg md:text-xl leading-relaxed">*/}
+                  {/*          {rightPoints.map((point, i) => (*/}
+                  {/*              <li key={i} className="flex items-start gap-4">*/}
+                  {/*<span className="flex-shrink-0 w-10 h-10 rounded-full bg-[#FF6B00]/80 text-black font-bold flex items-center justify-center text-xl">*/}
+                  {/*  {i + 1}*/}
+                  {/*</span>*/}
+                  {/*                  <span>{point}</span>*/}
+                  {/*              </li>*/}
+                  {/*          ))}*/}
+                  {/*      </ul>*/}
+                  {/*  </motion.div>*/}
                 </motion.div>
 
                 {/* فلش اتصال‌دهنده (اختیاری - برای حس جریان) */}
-                <div className="hidden lg:block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                    <svg width="160" height="80" viewBox="0 0 160 80" fill="none">
-                        <path
-                            d="M0 40 H160 M140 20 L160 40 M140 60 L160 40"
-                            stroke="#FF6B00"
-                            strokeWidth="6"
-                            strokeLinecap="round"
-                        />
-                    </svg>
-                </div>
+                {/*<div className="hidden lg:block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">*/}
+                {/*    <svg width="160" height="80" viewBox="0 0 160 80" fill="none">*/}
+                {/*        <path*/}
+                {/*            d="M0 40 H160 M140 20 L160 40 M140 60 L160 40"*/}
+                {/*            stroke="#FF6B00"*/}
+                {/*            strokeWidth="6"*/}
+                {/*            strokeLinecap="round"*/}
+                {/*        />*/}
+                {/*    </svg>*/}
+                {/*</div>*/}
 
                 <div className="mt-16 text-center opacity-80 text-base">
                     ادغام با حداقل اختلال در فرآیندهای جاری + کاهش ریسک‌های عملیاتی و مالی

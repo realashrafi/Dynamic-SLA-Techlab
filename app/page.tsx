@@ -15,8 +15,10 @@ import SolutionArchitecture from "@/app/components/SolutionArchitecture";
 import QuestionsAndThankYou from "@/app/components/QuestionsAndThankYou";
 import DynamicDashboardSection from "@/app/components/DynamicDashboardSection";
 import SlaFlowDiagram from "@/app/components/SlaFlowDiagram";
-import Image from "next/image";
 import Header from "@/app/components/Header";
+import DynamicSlaDataModel from "@/app/components/DynamicSlaDataModel";
+import RealTime from "@/app/components/RealTime";
+import ImplementationPhases from "@/app/components/ImplementationPhases";
 
 const staggerContainer = {
     hidden: {opacity: 1},
@@ -51,6 +53,9 @@ export default function Home() {
             <SlaFlowDiagram/>
             <DynamicDashboardSection/>
             <SolutionArchitecture/>
+            <DynamicSlaDataModel/>
+            <RealTime/>
+            <ImplementationPhases/>
         </main>
     )
 }
