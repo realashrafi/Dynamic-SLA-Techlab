@@ -161,7 +161,8 @@ export default function RealTime() {
                                         offset: -2,
                                         dx: 80
                                     }}/>
-                                    <YAxis stroke="#FFFFFF80" domain={[2, 8]} label={{
+                                    <YAxis stroke="#FFFFFF80" domain={[2, 8]} tick={false}           // ← اعداد رو مخفی می‌کنه
+                                            label={{
                                         value: 'درصد پایبندی به تعهد',
                                         angle: -90,
                                         position: 'insideLeft',
