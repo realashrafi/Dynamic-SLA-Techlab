@@ -11,7 +11,7 @@ export default function BenefitsSection() {
                 <div className="w-full h-full bg-[radial-gradient(circle_at_30%_70%,#ffffff22_0%,transparent_60%)]" />
             </div>
 
-            <div className="max-w-6xl mx-auto relative z-10">
+            <div className="max-w-5xl mx-auto relative z-10">
                 {/* عنوان اصلی */}
                 <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-16">
                     <div className="flex items-center gap-6">

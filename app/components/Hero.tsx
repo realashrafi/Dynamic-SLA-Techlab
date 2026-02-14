@@ -14,24 +14,24 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.2, ease: easeOut }}
-                className="relative z-10 max-w-5xl"
+                className="relative z-10 my-60 max-w-5xl"
             >
                 {/* لوگو nona – اگر svg داری جایگزین کن */}
-                <div className="text-8xl mt-70 md:text-9xl font-black tracking-tight mb-8">
-                    <Image src={'/NonaLogo.png'} width={500} className={'mx-auto'} height={200} alt={'نونا'}/>
-                </div>
 
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 text-white">
+                    <Image src={'/NonaLogo.png'} width={300} className={'mx-auto pt-20'} height={200} alt={'نونا'}/>
+
+
+                <h1 className="text-4xl font-bold leading-tight mb-6 text-white">
                      راهکار SLA داینامیک
                     <br />
                     <span className="text-[#FF6B00] block mt-4">در شبکه لجستیک تیپاکس</span>
                 </h1>
 
-                <p className="text-2xl mt-30 md:text-4xl font-medium mb-4 opacity-90">
+                <p className="text-2xl mt-24  font-medium mb-4 opacity-90">
                     «از چالش تا راه‌حل!»
                 </p>
 
-                <p className="text-xl md:text-2xl italic opacity-80">
+                <p className="text-xl  italic opacity-80">
                     "Start with pain end in pleasure"
                 </p>
             </motion.div>

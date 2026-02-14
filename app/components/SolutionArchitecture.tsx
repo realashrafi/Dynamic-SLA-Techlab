@@ -64,7 +64,7 @@ export default function SolutionArchitecture() {
                 <div className="w-full h-full bg-gradient-to-tr from-[#FF6B00]/5 to-transparent" />
             </div>
 
-            <div className="max-w-7xl mx-auto relative z-10">
+            <div className="max-w-5xl mx-auto relative z-10">
                 {/* عنوان اصلی */}
                 <motion.div
                     initial={{ opacity: 0, y: -40 }}

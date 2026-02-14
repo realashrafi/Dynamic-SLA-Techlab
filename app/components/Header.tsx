@@ -9,9 +9,9 @@ function Header() {
        backdrop-blur-[10px]
 bg-black/10
 rounded-b-xl
-        flex items-center justify-between
+        flex items-center text-nowrap justify-between
       ">
-            <div className={'flex items-center mr-8 text-white text-[19px] justify-center'}>
+            <div className={'flex items-center mr-8 text-white lg:text-[19px] justify-center'}>
                 <span className={'font-bold'}>تک‌لب</span>
                 <span>، راه برد با تکنولوژی</span>
             </div>

@@ -41,7 +41,7 @@ const rowVariants = {
 export default function ComparisonTable() {
     return (
         <section className="py-50 px-6 md:px-12 bg-[#001F3F] text-white">
-            <div className="max-w-[1400px] mx-auto">
+            <div className="max-w-5xl mx-auto">
                 {/* عنوان */}
                 <div className="flex items-center gap-6 mb-12">
                     <motion.div
@@ -64,7 +64,7 @@ export default function ComparisonTable() {
                     <table className="w-full text-right min-w-[1200px]">
                         <thead>
                         <tr className="bg-[#FF6B00] text-black">
-                            <th className="p-4 font-bold border-l border-black/20">ردیف</th>
+                            {/*<th className="p-4 font-bold border-l border-black/20">ردیف</th>*/}
                             <th className="p-4 font-bold border-l border-black/20">شهر فرستنده</th>
                             <th className="p-4 font-bold border-l border-black/20">شهر گیرنده</th>
                             <th className="p-4 font-bold border-l border-black/20">Plan SLA</th>
@@ -87,7 +87,7 @@ export default function ComparisonTable() {
                                     index % 2 === 0 ? 'bg-white/5' : 'bg-white/10'
                                 } hover:bg-[#FF6B00]/20 transition-colors`}
                             >
-                                <td className="p-4 border-l border-[#FF6B00]/20">{row.rank}</td>
+                                {/*<td className="p-4 border-l border-[#FF6B00]/20">{row.rank}</td>*/}
                                 <td className="p-4 border-l border-[#FF6B00]/20">{row.origin}</td>
                                 <td className="p-4 border-l border-[#FF6B00]/20">{row.dest}</td>
                                 <td className="p-4 border-l border-[#FF6B00]/20">{row.plan}</td>

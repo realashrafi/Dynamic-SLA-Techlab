@@ -11,8 +11,8 @@ const rows = [
 
 export default function ExecSummary() {
     return (
-        <section className="py-70 px-6 md:px-12  bg-[#001F3F] text-white">
-            <div className="max-w-6xl mx-auto">
+        <section className="py-70 px-6 md:px-24  bg-[#001F3F] text-white">
+            <div className="max-w-5xl mx-auto">
                 <div className="flex items-center gap-6 mb-12">
                     <motion.div
                         initial={{ scaleX: 0 }}

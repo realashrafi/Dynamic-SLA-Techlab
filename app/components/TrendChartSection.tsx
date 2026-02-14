@@ -50,7 +50,7 @@ const colors = {
 export default function TrendChartSection() {
     return (
         <section className="py-60 px-6 md:px-12 bg-[#001F3F] text-white">
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-5xl mx-auto">
                 {/* عنوان */}
                 <div className="flex items-center gap-6 mb-12">
                     <motion.div
