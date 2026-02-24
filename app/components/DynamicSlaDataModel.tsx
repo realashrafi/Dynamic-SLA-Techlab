@@ -5,7 +5,7 @@ import {motion} from "framer-motion";
 
 function DynamicSlaDataModel() {
     return (
-        <div className={'py-60  '}>
+        <div className={'py-60 px-6 '}>
             <div className={'  flex items-center justify-center flex-col max-w-5xl mx-auto '}>
                 <div className="flex items-center gap-6 mb-12">
                     <motion.div

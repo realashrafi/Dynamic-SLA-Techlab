@@ -12,8 +12,8 @@ const containerVariants = {
 }
 
 const boxVariants = {
-    hidden: {opacity: 0, x: -60},
-    visible: {opacity: 1, x: 0, transition: {duration: 0.8, ease: easeOut}},
+    hidden: {opacity: 0, y: -60},
+    visible: {opacity: 1, y: 0, transition: {duration: 0.8, ease: easeOut}},
 }
 
 const points1 = [
@@ -55,7 +55,7 @@ const points3 = [
 
 function ImplementationPhases() {
     return (
-        <div className={' py-60  '}>
+        <div className={' py-60 px-6 '}>
             <div className={' flex items-center justify-center flex-col max-w-5xl mx-auto '}>
                 <div className="flex items-center gap-6 mb-12">
                     <motion.div
