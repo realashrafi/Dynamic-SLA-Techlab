@@ -28,7 +28,7 @@ const factorVariants = {
 
 export default function FactorsSection() {
     return (
-        <section className="py-60 px-6 md:px-12 bg-[#001F3F] text-white relative overflow-hidden">
+        <section className="py-60 px-6 md:px-12 text-white relative overflow-hidden">
             {/* گرادیان ملایم برای عمق */}
             <div className="absolute inset-0 opacity-15 pointer-events-none">
                 <div className="w-full h-full bg-gradient-to-br from-[#FF6B00]/10 to-transparent" />

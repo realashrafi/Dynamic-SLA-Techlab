@@ -40,7 +40,7 @@ const rowVariants = {
 
 export default function ComparisonTable() {
     return (
-        <section className="py-50 px-6 md:px-12 bg-[#001F3F] text-white">
+        <section className="py-50 px-6 md:px-12  text-white">
             <div className="max-w-5xl mx-auto">
                 {/* عنوان */}
                 <div className="flex items-center gap-6 mb-12">

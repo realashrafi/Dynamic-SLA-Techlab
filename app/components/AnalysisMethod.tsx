@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 
 export default function AnalysisMethod() {
     return (
-        <section className="py-70 px-6 md:px-12 bg-gradient-to-br from-[#0A2540] via-[#001F3F] to-[#001F3F] text-white overflow-hidden">
+        <section className="py-70 px-6 md:px-12  text-white overflow-hidden">
             <div className="max-w-5xl mx-auto">
                 {/* عنوان با فلش */}
                 <div className="flex items-center gap-6 mb-12 md:mb-16">
