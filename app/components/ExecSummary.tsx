@@ -93,9 +93,9 @@ export default function ExecSummary() {
                 </motion.div>
 
                 {/* فوتر کوچک اختیاری */}
-                <p className="mt-10 text-center text-white/40 text-sm tracking-wide">
-                    nona – راهکار SLA داینامیک
-                </p>
+                {/*<p className="mt-10 text-center text-white/40 text-sm tracking-wide">*/}
+                {/*    nona – راهکار SLA داینامیک*/}
+                {/*</p>*/}
             </div>
         </section>
     )

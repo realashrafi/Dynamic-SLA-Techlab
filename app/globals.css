@@ -34,3 +34,14 @@ body {
   color: var(--foreground);
   font-family: "IranSans" !important;
 }
+
+@keyframes wave {
+  0%, 100% { d: path("M0 20 Q10 5 20 20 T40 20"); }
+  50%      { d: path("M0 20 Q10 35 20 20 T40 20"); }
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50%      { transform: scale(1.12); opacity: 0.6; }
+}
+.animate-wave { animation: wave 7s infinite ease-in-out; }
+.animate-pulse-slow { animation: pulse 6s infinite ease-in-out; }
