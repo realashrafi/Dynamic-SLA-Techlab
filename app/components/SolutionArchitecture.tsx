@@ -1,31 +1,33 @@
 // components/SolutionArchitecture.tsx
 'use client'
 
-import { motion } from 'framer-motion'
-import { easeOut } from 'framer-motion'
+import { motion, easeOut } from 'framer-motion'
 
 const leftPoints = [
     {
-        id:1,
-        title:'پیشنهاد SLA بهینه برای هر مسیر\n',
-        description:' تعیین SLA پیشنهادی بر اساس رفتار واقعی شبکه و الگوهای تاریخی هر مبدا–مقصد',
+        id: 1,
+        title: 'پیشنهاد SLA بهینه برای هر مسیر',
+        description: 'تعیین SLA پیشنهادی بر اساس رفتار واقعی شبکه و الگوهای تاریخی هر مبدا–مقصد',
     },
     {
-        id:2,
-        title:'پیش‌بینی عددی نرخ تحقق SLA\n',
-        description:' برآورد احتمال پایبندی به SLA برای تصمیم‌گیری دقیق‌تر در تعهددهی',
-    },{
-        id:3,
-        title:'هشدار پیشگیرانه ریسک نقض SLA\n',
-        description:' شناسایی زودهنگام مسیرهای پرریسک قبل از وقوع تأخیر و نقض تعهد',
-    },{
-        id:4,
-        title:'پیشنهاد اقدام عملیاتی مشخص (Actionable Recommendation)',
-        description:' ارائه اقدام‌های قابل اجرا برای کاهش ریسک (اولویت‌دهی، تغییر سرویس، تخصیص ظرفیت)\n',
-    },{
-        id:5,
-        title:'خروجی سیستم‌محور و قابل تزریق\n',
-        description:' تولید خروجی قابل استفاده در سیستم‌های عملیاتی از طریق داشبورد یا API\n',
+        id: 2,
+        title: 'پیش‌بینی عددی نرخ تحقق SLA',
+        description: 'برآورد احتمال پایبندی به SLA برای تصمیم‌گیری دقیق‌تر در تعهددهی',
+    },
+    {
+        id: 3,
+        title: 'هشدار پیشگیرانه ریسک نقض SLA',
+        description: 'شناسایی زودهنگام مسیرهای پرریسک قبل از وقوع تأخیر و نقض تعهد',
+    },
+    {
+        id: 4,
+        title: 'پیشنهاد اقدام عملیاتی مشخص',
+        description: 'ارائه اقدام‌های قابل اجرا برای کاهش ریسک (اولویت‌دهی، تغییر سرویس، تخصیص ظرفیت)',
+    },
+    {
+        id: 5,
+        title: 'خروجی سیستم‌محور و قابل تزریق',
+        description: 'تولید خروجی قابل استفاده در سیستم‌های عملیاتی از طریق داشبورد یا API',
     },
 ]
 
@@ -42,109 +44,149 @@ const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
-        transition: { staggerChildren: 0.2, delayChildren: 0.3 },
+        transition: { staggerChildren: 0.15, delayChildren: 0.4 },
     },
 }
 
-const boxVariants = {
-    hidden: { opacity: 0, x: -60 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: easeOut } },
-}
-
-const rightBoxVariants = {
-    hidden: { opacity: 0, x: 60 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: easeOut } },
+const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: easeOut } },
 }
 
 export default function SolutionArchitecture() {
     return (
-        <section className="py-60 px-6 md:px-12  text-white relative overflow-hidden">
-            {/* گرادیان پس‌زمینه ملایم */}
-            <div className="absolute inset-0 opacity-10 pointer-events-none">
-                <div className="w-full h-full bg-gradient-to-tr from-[#FF6B00]/5 to-transparent" />
-            </div>
-
-            <div className="max-w-5xl mx-auto relative z-10">
-                {/* عنوان اصلی */}
+        <section className="py-20 md:py-28 lg:py-36 px-5 sm:px-8 lg:px-16  text-white overflow-hidden">
+            <div className="max-w-6xl mx-auto relative z-10">
+                {/* عنوان اصلی با گرادیان */}
                 <motion.div
-                    initial={{ opacity: 0, y: -40 }}
+                    initial={{ opacity: 0, y: -50 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.9 }}
-                    className="text-center mb-16"
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, ease: 'easeOut' }}
+                    className="text-center mb-16 md:mb-20"
                 >
-                    <h2 className="text-4xl md:text-6xl font-black text-[#FF6B00] drop-shadow-lg">
-                        راهکار تک لب
+                    <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-white tracking-tight drop-shadow-lg">
+                        راهکار تک‌لب
                     </h2>
-                    <p className="text-xl md:text-2xl mt-4 opacity-90">
+                    <p className="mt-4 text-xl md:text-2xl text-white/85 font-medium">
                         SLA داینامیک مبتنی بر داده + کنترل هوشمند + هشدار بلادرنگ
                     </p>
                 </motion.div>
 
+                {/* دو ستون اصلی با glassmorphism */}
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
-                    className="grid grid-cols-1 lg:grid-cols-1 gap-12 md:gap-20 items-start"
+                    viewport={{ once: true }}
+                    className="grid grid-cols-1 lg:grid-cols-1 gap-8 lg:gap-12 items-start"
                 >
                     {/* ستون چپ: تحلیل داده‌ای */}
-                    <motion.div variants={boxVariants} className="bg-white/10 backdrop-blur-lg border border-[#FF6B00]/40 rounded-2xl p-8 md:p-10 shadow-2xl">
-                        {/*<h3 className="text-2xl md:text-3xl font-bold text-[#FF6B00] mb-8 text-center">*/}
-                        {/*    امکان طراحی SLA داینامیک مبتنی بر شواهد داده‌ای*/}
-                        {/*</h3>*/}
+                    <motion.div
+                        variants={containerVariants}
+                        className="
+              bg-[#0A1F44]/30 backdrop-blur-lg border border-white/10
+              rounded-2xl lg:rounded-3xl p-8 md:p-10 shadow-2xl shadow-black/50
+              hover:shadow-[#FF6B00]/20 hover:border-[#FF6B00]/20 transition-all duration-500
+            "
+                    >
+                        <h3 className="text-2xl md:text-3xl font-bold text-[#FF6B00] mb-8 text-center">
+                            امکان طراحی SLA داینامیک مبتنی بر شواهد داده‌ای
+                        </h3>
 
-                        <ul className="space-y-6 text-lg md:text-xl leading-relaxed">
-                            {leftPoints.map((item, i) => (
-                                <li key={i} className="flex items-start gap-4">
-                  <span className="flex-shrink-0 w-10 h-10 rounded-full bg-[#FF6B00]/80 text-black font-bold flex items-center justify-center text-xl">
-                    {i + 1}
-                  </span>
-                                    <div className={'flex items-start justify-center flex-col text-right'}>
-                                        <span className={'font-bold'}>{item.title}</span>
-                                        <span className={'text-[15px]'}>{item.description}</span>
+                        <ul className="space-y-6">
+                            {leftPoints.map((item) => (
+                                <motion.li
+                                    key={item.id}
+                                    variants={itemVariants}
+                                    className="flex items-start gap-5 group"
+                                >
+                                    <div className="
+                    flex-shrink-0 w-10 h-10 rounded-xl backdrop-blur-md
+                    bg-white/10 border border-white/20 text-[#FF6B00]
+                    font-bold text-xl flex items-center justify-center
+                    shadow-md group-hover:scale-110 transition-transform
+                  ">
+                                        {item.id}
                                     </div>
-                                </li>
+                                    <div className="text-right">
+                                        <p className="font-semibold text-lg md:text-xl text-white/95">
+                                            {item.title}
+                                        </p>
+                                        <p className="text-base md:text-lg text-white/80 mt-1 leading-relaxed">
+                                            {item.description}
+                                        </p>
+                                    </div>
+                                </motion.li>
                             ))}
                         </ul>
                     </motion.div>
 
-                    {/* ستون راست: کنترل انطباق + سامانه هشدار */}
-                  {/*  <motion.div variants={rightBoxVariants} className="bg-white/10 backdrop-blur-lg border border-[#FF6B00]/40 rounded-2xl p-8 md:p-10 shadow-2xl">*/}
-                  {/*      <h3 className="text-2xl md:text-3xl font-bold text-[#FF6B00] mb-8 text-center">*/}
-                  {/*          کنترل انطباق چندسطحی + سامانه هشداردهنده SLA*/}
-                  {/*      </h3>*/}
+            {/*        /!* ستون راست: کنترل انطباق + سامانه هشدار *!/*/}
+            {/*        <motion.div*/}
+            {/*            variants={containerVariants}*/}
+            {/*            className="*/}
+            {/*  backdrop-blur-2xl bg-white/5 border border-white/10*/}
+            {/*  rounded-2xl lg:rounded-3xl p-8 md:p-10 shadow-2xl shadow-black/50*/}
+            {/*  hover:shadow-[#FF6B00]/20 hover:border-[#FF6B00]/20 transition-all duration-500*/}
+            {/*"*/}
+            {/*        >*/}
+            {/*            <h3 className="text-2xl md:text-3xl font-bold text-[#FF6B00] mb-8 text-center">*/}
+            {/*                کنترل انطباق چندسطحی + سامانه هشداردهنده SLA*/}
+            {/*            </h3>*/}
 
-                  {/*      <ul className="space-y-6 text-lg md:text-xl leading-relaxed">*/}
-                  {/*          {rightPoints.map((point, i) => (*/}
-                  {/*              <li key={i} className="flex items-start gap-4">*/}
-                  {/*<span className="flex-shrink-0 w-10 h-10 rounded-full bg-[#FF6B00]/80 text-black font-bold flex items-center justify-center text-xl">*/}
-                  {/*  {i + 1}*/}
-                  {/*</span>*/}
-                  {/*                  <span>{point}</span>*/}
-                  {/*              </li>*/}
-                  {/*          ))}*/}
-                  {/*      </ul>*/}
-                  {/*  </motion.div>*/}
+            {/*            <ul className="space-y-6">*/}
+            {/*                {rightPoints.map((point, i) => (*/}
+            {/*                    <motion.li*/}
+            {/*                        key={i}*/}
+            {/*                        variants={itemVariants}*/}
+            {/*                        custom={i}*/}
+            {/*                        className="flex items-start gap-5 group"*/}
+            {/*                    >*/}
+            {/*                        <div className="*/}
+            {/*        flex-shrink-0 w-10 h-10 rounded-xl backdrop-blur-md*/}
+            {/*        bg-white/10 border border-white/20 text-[#FF6B00]*/}
+            {/*        font-bold text-xl flex items-center justify-center*/}
+            {/*        shadow-md group-hover:scale-110 transition-transform*/}
+            {/*      ">*/}
+            {/*                            {i + 1}*/}
+            {/*                        </div>*/}
+            {/*                        <p className="text-base md:text-lg text-white/90 leading-relaxed text-right">*/}
+            {/*                            {point}*/}
+            {/*                        </p>*/}
+            {/*                    </motion.li>*/}
+            {/*                ))}*/}
+            {/*            </ul>*/}
+            {/*        </motion.div>*/}
                 </motion.div>
 
-                {/* فلش اتصال‌دهنده (اختیاری - برای حس جریان) */}
-                {/*<div className="hidden lg:block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">*/}
-                {/*    <svg width="160" height="80" viewBox="0 0 160 80" fill="none">*/}
+                {/*/!* فلش اتصال‌دهنده افقی (برای حس جریان بین دو ستون) *!/*/}
+                {/*<div className="hidden lg:block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0">*/}
+                {/*    <svg width="180" height="100" viewBox="0 0 180 100" fill="none">*/}
                 {/*        <path*/}
-                {/*            d="M0 40 H160 M140 20 L160 40 M140 60 L160 40"*/}
+                {/*            d="M0 50 H180 M160 30 L180 50 M160 70 L180 50"*/}
                 {/*            stroke="#FF6B00"*/}
-                {/*            strokeWidth="6"*/}
+                {/*            strokeWidth="5"*/}
                 {/*            strokeLinecap="round"*/}
+                {/*            opacity="0.4"*/}
                 {/*        />*/}
                 {/*    </svg>*/}
                 {/*</div>*/}
 
-                <div className="mt-16 text-center opacity-80 text-base">
-                    ادغام با حداقل اختلال در فرآیندهای جاری + کاهش ریسک‌های عملیاتی و مالی
-                </div>
+                {/* جمع‌بندی پایین */}
+                <motion.p
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: 0.8 }}
+                    className="mt-16 md:mt-20 text-center text-white/80 text-lg md:text-xl leading-relaxed max-w-4xl mx-auto"
+                >
+                    ادغام با حداقل اختلال در فرآیندهای جاری + کاهش ریسک‌های عملیاتی و مالی تیپاکس
+                </motion.p>
 
-                {/*<div className="mt-10 text-center opacity-70 text-sm">*/}
-                {/*    nona*/}
-                {/*</div>*/}
+                {/*<p className="mt-10 text-center text-white/40 text-base md:text-lg tracking-wide">*/}
+                {/*    nona – راهکار جامع SLA داینامیک*/}
+                {/*</p>*/}
             </div>
         </section>
     )

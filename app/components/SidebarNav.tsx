@@ -1,28 +1,34 @@
-// components/Sidebar.tsx   (یا SidebarNav.tsx - اسم رو خودت تنظیم کن)
+// components/Sidebar.tsx
 'use client'
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import {
+    Menu, X,
+    Home, FileText, AlertTriangle, Award,
+    BarChart3, Table, LineChart, Layers,
+    GitBranch, LayoutDashboard, Settings,
+    Database, Clock, ListChecks, HelpCircle
+} from 'lucide-react'
 
 const navItems = [
-    { label: 'خانه', href: '/' },
-    { label: 'خلاصه اجرایی', href: '/exec-summary' },
-    { label: 'مسئله و مشکل', href: '/problem' },
-    { label: 'مزایا', href: '/benefits' },
-    { label: 'روش تحلیل', href: '/analysis' },
-    { label: 'جدول مقایسه', href: '/comparison' },
-    { label: 'چارت‌ها', href: '/charts' },
-    { label: 'عوامل کلیدی', href: '/factors' },
-    { label: 'فلو SLA', href: '/sla-flow' },
-    { label: 'داشبورد دینامیک', href: '/dashboard' },
-    { label: 'معماری راه‌حل', href: '/architecture' },
-    { label: 'مدل داده SLA', href: '/data-model' },
-    { label: 'زمان واقعی', href: '/real-time' },
-    { label: 'مراحل پیاده‌سازی', href: '/implementation' },
-    { label: 'سوالات و تشکر', href: '/questions' },
+    { label: 'خانه',          href: '/',                     icon: Home },
+    { label: 'خلاصه اجرایی',   href: '/exec-summary',         icon: FileText },
+    { label: 'مسئله و مشکل',   href: '/problem',              icon: AlertTriangle },
+    { label: 'مزایا',          href: '/benefits',             icon: Award },
+    { label: 'روش تحلیل',      href: '/analysis',             icon: BarChart3 },
+    { label: 'جدول مقایسه',    href: '/comparison',           icon: Table },
+    { label: 'چارت‌ها',        href: '/charts',               icon: LineChart },
+    { label: 'عوامل کلیدی',    href: '/factors',              icon: Layers },
+    { label: 'فلو SLA',        href: '/sla-flow',             icon: GitBranch },
+    { label: 'داشبورد دینامیک', href: '/dashboard',           icon: LayoutDashboard },
+    { label: 'معماری راه‌حل',  href: '/architecture',         icon: Settings },
+    { label: 'مدل داده SLA',   href: '/data-model',           icon: Database },
+    { label: 'زمان واقعی',      href: '/real-time',            icon: Clock },
+    { label: 'مراحل پیاده‌سازی', href: '/implementation',     icon: ListChecks },
+    { label: 'سوالات',         href: '/questions',            icon: HelpCircle },
 ]
 
 const sidebarVariants = {
@@ -53,7 +59,6 @@ export default function Sidebar() {
     const pathname = usePathname()
     const [isOpen, setIsOpen] = useState(false)
 
-    // بستن منو وقتی مسیر عوض شد (موبایل)
     useEffect(() => {
         setIsOpen(false)
     }, [pathname])
@@ -63,86 +68,104 @@ export default function Sidebar() {
             {/* دکمه همبرگر - فقط موبایل */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="fixed top-1.5 right-3 z-50 md:hidden p-3 bg-[#0A1F44]/40  rounded-full text-white shadow-lg hover:bg-blue-900/50 transition-all"
+                className="fixed top-1.5 right-3 z-50 md:hidden p-3 bg-[#0A1F44]/10 backdrop-blur-lg border border-white/10 rounded-full text-white shadow-xl hover:bg-[#FF6B00]/40 transition-all duration-300"
                 aria-label="باز و بسته کردن منو"
             >
                 {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
 
-            {/* سایدبار دسکتاپ - همیشه visible از md به بالا */}
-            <aside className="hidden md:block w-64 lg:w-72 fixed top-[64px] right-0 h-screen bg-[#0A1F44]/30 backdrop-blur-lg border-l border-white/10 z-40 overflow-y-auto">
-                <div className="p-6 md:p-8">
-                    <h2 className="text-2xl font-bold mb-10 text-center md:text-right">منو</h2>
-                    <nav className="space-y-2">
-                        {navItems.map((item) => (
-                            <Link
-                                key={item.href}
-                                href={item.href}
-                                className={`
-                  block px-5 py-3.5 rounded-xl text-base transition-all duration-300
-                  ${
-                                    pathname === item.href
-                                        ? 'bg-blue-700/40 text-blue-300 font-medium shadow-inner'
+            {/* سایدبار دسکتاپ */}
+            <aside className="hidden md:block w-64 lg:w-72 fixed top-16 right-0 h-screen bg-[#0A1F44]/30 backdrop-blur-xl border-l border-white/10 z-40 overflow-y-auto">
+                <div className="p-6 lg:p-8">
+                    <h2 className="text-2xl lg:text-3xl font-extrabold mb-10 text-center lg:text-right bg-clip-text text-transparent bg-gradient-to-r from-white to-[#FF6B00]">
+                        منو
+                    </h2>
+                    <nav className="space-y-1.5">
+                        {navItems.map((item) => {
+                            const Icon = item.icon
+                            const isActive = pathname === item.href
+
+                            return (
+                                <Link
+                                    key={item.href}
+                                    href={item.href}
+                                    className={`
+                    group flex items-center gap-4 px-5 py-3.5 rounded-xl text-base transition-all duration-300
+                    ${isActive
+                                        ? 'bg-[#FF6B00]/20 text-[#FF6B00] font-medium shadow-inner'
                                         : 'text-gray-300 hover:bg-white/10 hover:text-white'
-                                }
-                `}
-                            >
-                                {item.label}
-                            </Link>
-                        ))}
+                                    }
+                  `}
+                                >
+                                    <Icon
+                                        size={22}
+                                        className={`transition-transform duration-300 ${isActive ? 'scale-110' : 'group-hover:scale-110'}`}
+                                    />
+                                    {item.label}
+                                </Link>
+                            )
+                        })}
                     </nav>
                 </div>
             </aside>
 
-            {/* منوی موبایل - با AnimatePresence و motion.div */}
+            {/* منوی موبایل */}
             <AnimatePresence>
                 {isOpen && (
                     <>
-                        {/* overlay تاریک - کلیک روش → بستن */}
                         <motion.div
                             initial={{ opacity: 0 }}
-                            animate={{ opacity: 0.6 }}
+                            animate={{ opacity: 0.7 }}
                             exit={{ opacity: 0 }}
                             transition={{ duration: 0.3 }}
-                            className="fixed inset-0 bg-black/60 z-40 md:hidden"
+                            className="fixed inset-0 bg-black/70 z-40 md:hidden backdrop-blur-sm"
                             onClick={() => setIsOpen(false)}
                         />
 
-                        {/* خود منو - slide از راست */}
                         <motion.div
-                            // @ts-ignore
+                            //@ts-ignore
                             variants={sidebarVariants}
                             initial="hidden"
                             animate="visible"
                             exit="exit"
-                            className="fixed inset-y-0 right-0 w-4/5 max-w-xs bg-[#0A1F44]/30 backdrop-blur-lg border-l border-white/10 z-50 flex flex-col md:hidden shadow-2xl"
+                            className="fixed inset-y-0 right-0 w-4/5 max-w-xs bg-[#0A1F44]/40 backdrop-blur-xl border-l border-white/10 z-50 flex flex-col md:hidden shadow-2xl"
                         >
-                            <div className="flex items-center justify-between p-4 border-b border-white/10">
-                                <h2 className="text-xl font-bold">منو</h2>
-                                <button onClick={() => setIsOpen(false)}>
+                            <div className="flex items-center justify-between p-2 px-5 border-b border-white/10">
+                                <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-[#FF6B00]">
+                                    منو
+                                </h2>
+                                <button
+                                    onClick={() => setIsOpen(false)}
+                                    className="p-2 hover:bg-white/10 rounded-full transition-colors"
+                                >
                                     <X size={32} />
                                 </button>
                             </div>
 
-                            <nav className="flex-1 p-6 space-y-6 overflow-y-auto">
-                                {navItems.map((item) => (
-                                    <motion.div key={item.href} variants={itemVariants}>
-                                        <Link
-                                            href={item.href}
-                                            onClick={() => setIsOpen(false)}
-                                            className={`
-                        block text-2xl font-medium transition-colors
-                        ${
-                                                pathname === item.href
-                                                    ? 'text-blue-400'
-                                                    : 'text-white hover:text-blue-300'
-                                            }
-                      `}
-                                        >
-                                            {item.label}
-                                        </Link>
-                                    </motion.div>
-                                ))}
+                            <nav className="flex-1 p-6 space-y-5 overflow-y-auto">
+                                {navItems.map((item) => {
+                                    const Icon = item.icon
+                                    const isActive = pathname === item.href
+
+                                    return (
+                                        <motion.div key={item.href} variants={itemVariants}>
+                                            <Link
+                                                href={item.href}
+                                                onClick={() => setIsOpen(false)}
+                                                className={`
+                          flex items-center gap-4 text-xl font-medium transition-all duration-300
+                          ${isActive
+                                                    ? 'text-[#FF6B00]'
+                                                    : 'text-white hover:text-[#FF6B00]'
+                                                }
+                        `}
+                                            >
+                                                <Icon size={26} className={isActive ? 'scale-110' : ''} />
+                                                {item.label}
+                                            </Link>
+                                        </motion.div>
+                                    )
+                                })}
                             </nav>
                         </motion.div>
                     </>

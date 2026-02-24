@@ -40,70 +40,92 @@ const rowVariants = {
 
 export default function ComparisonTable() {
     return (
-        <section className="py-50 px-6 md:px-12  text-white">
-            <div className="max-w-5xl mx-auto">
-                {/* عنوان */}
-                <div className="flex items-center gap-6 mb-12">
+        <section className="py-20 md:py-28 lg:py-32 px-5 sm:px-8 lg:px-16 bg-[#0A1F44]/30 backdrop-blur-lg border border-white/10 text-white overflow-hidden">
+            <div className="max-w-6xl mx-auto">
+                {/* هدر */}
+                <div className="flex items-center gap-5 md:gap-6 mb-10 md:mb-14">
                     <motion.div
                         initial={{ scaleX: 0 }}
                         whileInView={{ scaleX: 1 }}
-                        transition={{ duration: 0.9 }}
-                        className="w-20 h-1.5 bg-[#FF6B00] rounded-full origin-left"
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.2, ease: 'easeOut' }}
+                        className="w-20 h-1.5 bg-gradient-to-r from-[#FF6B00] to-[#FFB74D] rounded-full origin-left"
                     />
-                    <h2 className="text-3xl md:text-5xl font-bold text-[#FF6B00]">
-                        مشخصات SLA بین 20 مبدا و مقصد کاندیدای SLA Dynamic
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-100 to-white tracking-tight">
+                        مشخصات SLA بین ۲۰ مبدا و مقصد کاندیدای SLA Dynamic
                     </h2>
                 </div>
 
-                <p className="text-lg md:text-xl opacity-90 mb-10">
-                    تمرکز بر مسیرهای با بیشترین حجم مرسوله — مبنا: مد زمان تحویل — بازه: هفته‌های ۱ تا ۳۲ سال ۱۴۰4
+                <p className="text-lg md:text-xl text-white/80 mb-10 md:mb-12 max-w-3xl">
+                    تمرکز بر مسیرهای با بیشترین حجم مرسوله — مبنا: مد زمان تحویل — بازه: هفته‌های ۱ تا ۳۲ سال ۱۴۰۴
                 </p>
 
-                {/* جدول */}
-                <div className="overflow-x-auto rounded-xl border border-[#FF6B00]/30 shadow-2xl">
-                    <table className="w-full text-right min-w-[1200px]">
-                        <thead>
-                        <tr className="bg-[#FF6B00] text-black">
-                            {/*<th className="p-4 font-bold border-l border-black/20">ردیف</th>*/}
-                            <th className="p-4 font-bold border-l border-black/20">شهر فرستنده</th>
-                            <th className="p-4 font-bold border-l border-black/20">شهر گیرنده</th>
-                            <th className="p-4 font-bold border-l border-black/20">Plan SLA</th>
-                            <th className="p-4 font-bold border-l border-black/20">% پایبندی فعلی</th>
-                            <th className="p-4 font-bold border-l border-black/20">تعداد مرسوله</th>
-                            <th className="p-4 font-bold border-l border-black/20">میانگین زمان</th>
-                            <th className="p-4 font-bold bg-[#FF8C00] text-white">درصد بهبود یافته</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {tableData.map((row, index) => (
-                            <motion.tr
-                                key={index}
-                                custom={index}
-                                variants={rowVariants}
-                                initial="hidden"
-                                whileInView="visible"
-                                viewport={{ once: true }}
-                                className={`border-b border-[#FF6B00]/20 ${
-                                    index % 2 === 0 ? 'bg-white/5' : 'bg-white/10'
-                                } hover:bg-[#FF6B00]/20 transition-colors`}
-                            >
-                                {/*<td className="p-4 border-l border-[#FF6B00]/20">{row.rank}</td>*/}
-                                <td className="p-4 border-l border-[#FF6B00]/20">{row.origin}</td>
-                                <td className="p-4 border-l border-[#FF6B00]/20">{row.dest}</td>
-                                <td className="p-4 border-l border-[#FF6B00]/20">{row.plan}</td>
-                                <td className="p-4 border-l border-[#FF6B00]/20">{row.actual.toFixed(1)}%</td>
-                                <td className="p-4 border-l border-[#FF6B00]/20">{row.count.toLocaleString()}</td>
-                                <td className="p-4 border-l border-[#FF6B00]/20">{row.avgTime}</td>
-                                <td className="p-4 font-bold text-[#FF6B00]">{row.improved.toFixed(1)}%</td>
-                            </motion.tr>
-                        ))}
-                        </tbody>
-                    </table>
-                </div>
+                {/* کارت شیشه‌ای اصلی جدول */}
+                <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1 }}
+                    className={`
+            backdrop-blur-2xl bg-white/4 border border-white/10 
+            rounded-2xl md:rounded-3xl shadow-2xl shadow-black/50 
+            overflow-hidden
+          `}
+                >
+                    <div className="overflow-x-auto">
+                        <table className="w-full text-right border-collapse min-w-[900px] lg:min-w-full">
+                            <thead>
+                            <tr className="bg-gradient-to-r from-[#FF6B00]/20 via-[#FF8A3D]/10 to-transparent text-white/95">
+                                <th className="p-5 md:p-6 font-bold text-base md:text-lg border-b border-white/10">شهر فرستنده</th>
+                                <th className="p-5 md:p-6 font-bold text-base md:text-lg border-b border-white/10">شهر گیرنده</th>
+                                <th className="p-5 md:p-6 font-bold text-base md:text-lg border-b border-white/10">Plan SLA</th>
+                                <th className="p-5 md:p-6 font-bold text-base md:text-lg border-b border-white/10">% پایبندی فعلی</th>
+                                <th className="p-5 md:p-6 font-bold text-base md:text-lg border-b border-white/10">تعداد مرسوله</th>
+                                <th className="p-5 md:p-6 font-bold text-base md:text-lg border-b border-white/10">میانگین زمان (روز)</th>
+                                <th className="p-5 md:p-6 font-extrabold text-lg md:text-xl bg-[#FF6B00]/30 text-[#FFEBB3] border-b border-white/10">
+                                    درصد بهبود یافته
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {tableData.map((row, index) => (
+                                <motion.tr
+                                    key={index}
+                                    custom={index}
+                                    variants={rowVariants}
+                                    initial="hidden"
+                                    whileInView="visible"
+                                    viewport={{ once: true }}
+                                    className={`
+                      border-b border-white/5 last:border-b-0
+                      hover:bg-white/8 transition-colors duration-300
+                      ${index % 2 === 0 ? 'bg-white/3' : 'bg-transparent'}
+                    `}
+                                >
+                                    <td className="p-5 md:p-6 border-l border-white/10">{row.origin}</td>
+                                    <td className="p-5 md:p-6 border-l border-white/10">{row.dest}</td>
+                                    <td className="p-5 md:p-6 border-l border-white/10 text-center">{row.plan}</td>
+                                    <td className="p-5 md:p-6 border-l border-white/10 text-center text-red-300/90 font-medium">
+                                        {row.actual.toFixed(1)}%
+                                    </td>
+                                    <td className="p-5 md:p-6 border-l border-white/10 text-center font-medium">
+                                        {row.count.toLocaleString('fa-IR')}
+                                    </td>
+                                    <td className="p-5 md:p-6 border-l border-white/10 text-center">{row.avgTime}</td>
+                                    <td className="p-5 md:p-6 font-bold text-center text-[#FFEBB3] text-lg md:text-xl">
+                                        +{row.improved.toFixed(1)}%
+                                    </td>
+                                </motion.tr>
+                            ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </motion.div>
 
-                {/*<div className="mt-10 text-center opacity-70 text-sm">*/}
-                {/*    nona*/}
-                {/*</div>*/}
+                {/*/!* کپشن پایین *!/*/}
+                {/*<p className="mt-10 text-center text-white/50 text-base md:text-lg">*/}
+                {/*    nona – اولویت‌بندی مسیرها برای بیشترین تاثیر SLA داینامیک*/}
+                {/*</p>*/}
             </div>
         </section>
     )

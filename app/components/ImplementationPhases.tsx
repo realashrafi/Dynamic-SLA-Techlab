@@ -1,165 +1,152 @@
+// components/ImplementationPhases.tsx
 'use client'
-import React from 'react';
-import Image from "next/image";
-import {easeOut, motion} from "framer-motion";
 
-const containerVariants = {
-    hidden: {opacity: 0},
-    visible: {
+import { motion, easeOut } from 'framer-motion'
+import Image from 'next/image'
+
+const phases = [
+    {
+        title: 'Data Discovery (کشف داده‌ها)',
+        points: [
+            'جمع‌آوری تمام داده‌های مرتبط با مسیرها، SLAها، ظرفیت هاب‌ها و فاکتورهای واقعی شبکه (ترافیک، آب و هوا، اثرات فصلی و غیره)',
+            'نوع بسته (P/NP/NC) در این روند تاثیرگذار است',
+            'هدف: شناسایی منابع داده و درک الگوهای عملیاتی شبکه',
+        ],
+    },
+    {
+        title: 'LSTM & SLM (مدل پیش‌بینی زمان تحویل)',
+        points: [
+            'داده‌های جمع‌آوری‌شده به مدل LSTM داده می‌شوند تا الگوهای زمانی و روندهای تحویل شناسایی شود',
+            'این مدل امکان پیش‌بینی دقیق‌تر زمان واقعی تحویل و رفتار شبکه را فراهم می‌کند',
+            'خروجی مدل LSTM به مرحله مدل‌سازی SLA منتقل می‌شود',
+            'SLAها با واقعیت شبکه تیون می‌شوند و قابلیت پیش‌بینی و تصمیم‌گیری عملیاتی ایجاد می‌شود',
+        ],
+    },
+    {
+        title: 'Platform (پلتفرم نهایی)',
+        points: [
+            'مبنای تغییر و تاثیر آن در پلتفرم نمایش داده می‌شود',
+            'کاربران مختلف (عملیات، فروش، مدیریت و قراردادها) می‌توانند تصمیمات مبتنی بر داده اتخاذ کنند',
+            'هشدارها، گزارش‌ها و توصیه‌های عملیاتی در دسترس قرار می‌گیرد',
+        ],
+    },
+]
+
+const phaseVariants = {
+    hidden: { opacity: 0, y: 60, scale: 0.94 },
+    visible: (i: number) => ({
         opacity: 1,
-        transition: {staggerChildren: 0.2, delayChildren: 0.3},
-    },
+        y: 0,
+        scale: 1,
+        transition: {
+            duration: 0.9,
+            delay: i * 0.25,
+            ease: easeOut,
+        },
+    }),
 }
 
-const boxVariants = {
-    hidden: {opacity: 0, y: -60},
-    visible: {opacity: 1, y: 0, transition: {duration: 0.8, ease: easeOut}},
+const itemVariants = {
+    hidden: { opacity: 0, x: 30 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
 }
 
-const points1 = [
-    {
-        id: 1,
-        description: 'ابتدا تمام داده‌های مرتبط با مسیرها، SLAها، ظرفیت هاب‌ها و فاکتورهای واقعی شبکه (ترافیک، آب و هوا، اثرات فصلی و غیره) جمع‌آوری و تحلیل می‌شوند. نوع بسته (P/NP/NC) در این روند تاثیرگذار است.\n',
-    },
-    {
-        id: 2,
-        description: ' هدف این مرحله شناسایی منابع داده و درک الگوهای عملیاتی است.\n',
-    },
-]
-const points2 = [
-    {
-        id: 1,
-        description: 'داده‌های جمع‌آوری‌شده به مدل LSTM (Long Short-Term Memory) داده می‌شوند تا الگوهای زمانی و روندهای تحویل بسته‌ها شناسایی شود.\n',
-    },
-    {
-        id: 2,
-        description: ' این مدل امکان پیش‌بینی دقیق‌تر زمان واقعی تحویل بسته‌ها و رفتار شبکه را فراهم می‌کند.\n',
-    }, {
-        id: 3,
-        description: 'خروجی مدل LSTM به مرحله مدل‌سازی SLA منتقل می‌شود تا SLA داینامیک و عملیاتی استخراج شود.\n',
-    }, {
-        id: 4,
-        description: 'در این مرحله SLAها با واقعیت شبکه تیون می‌شوند و قابلیت پیش‌بینی و تصمیم‌گیری عملیاتی فراهم می‌شود.\n',
-    },
-]
-const points3 = [
-    {
-        id: 1,
-        description: 'مبنای تغییر و تاثیر آن در پلتفرم نمایش داده می‌شوند.\n',
-    },
-    {
-        id: 2,
-        description: 'کاربران مختلف (عملیات، فروش، مدیریت و قراردادها) می‌توانند تصمیمات مبتنی بر داده‌ها اتخاذ کنند و هشدارها و گزارش‌ها را مشاهده کنند.\n',
-    },
-]
-
-function ImplementationPhases() {
+export default function ImplementationPhases() {
     return (
-        <div className={' py-60 px-6 '}>
-            <div className={' flex items-center justify-center flex-col max-w-5xl mx-auto '}>
-                <div className="flex items-center gap-6 mb-12">
+        <section className="py-20 md:py-28 lg:py-36 px-5 sm:px-8 lg:px-16 text-white overflow-hidden">
+            <div className="max-w-6xl mx-auto">
+                {/* عنوان اصلی */}
+                <div className="flex items-center justify-center gap-5 md:gap-6 mb-12 md:mb-16">
                     <motion.div
-                        initial={{scaleX: 0}}
-                        whileInView={{scaleX: 1}}
-                        transition={{duration: 0.9}}
-                        className="w-16 h-1.5 bg-[#FF6B00] rounded-full origin-left"
+                        initial={{ scaleX: 0 }}
+                        whileInView={{ scaleX: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.2, ease: 'easeOut' }}
+                        className="w-20 h-1.5 bg-gradient-to-r from-[#FF6B00] to-[#FF8A3D] rounded-full origin-left"
                     />
-                    <h2 className="text-3xl md:text-5xl font-bold text-[#FF6B00]">
-                        روش اجرا
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-100 to-white tracking-tight text-center">
+                        روش اجرا (Implementation Phases)
                     </h2>
                 </div>
 
-                {/* توضیح کوتاه */}
-                <Image src={'/ImplementationPhasesImage.png'} width={700} height={100} className={'rounded-2xl'}
-                       alt={'SlaFlowDiagram'}/>
-
+                {/* تصویر اصلی بالای فازها (اختیاری - اگر بخوای می‌تونی جابجا کنی) */}
                 <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    className="grid grid-cols-1 mt-20 px-10 lg:grid-cols-1 gap-12 md:gap-20 items-start max-w-7xl"
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.1 }}
+                    className="
+            bg-[#0A1F44]/30 backdrop-blur-lg border border-white/10
+            rounded-2xl md:rounded-3xl shadow-2xl shadow-black/60 
+            overflow-hidden p-4 md:p-6 mx-auto max-w-5xl mb-16 md:mb-20
+          "
                 >
-                    {/* ستون چپ: تحلیل داده‌ای */}
-                    <motion.div variants={boxVariants}
-                                className="bg-white/10 backdrop-blur-lg border border-[#FF6B00]/40 rounded-2xl p-8 md:p-10 shadow-2xl">
-                        <h3 className="text-2xl md:text-3xl font-bold text-[#FF6B00] mb-8 text-center">
-                            Data Discovery (کشف داده‌ها)
-                        </h3>
-
-                        <ul className="space-y-6 text-lg md:text-xl leading-relaxed">
-                            {points1.map((item, i) => (
-                                <li key={i} className="flex items-start gap-4">
-                  <span
-                      className="flex-shrink-0 w-10 h-10 rounded-full bg-[#FF6B00]/80 text-black font-bold flex items-center justify-center text-xl">
-                    {i + 1}
-                  </span>
-                                    <div className={'flex items-start justify-center flex-col text-right'}>
-                                        <span className={'text-[15px] mt-3'}>{item.description}</span>
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
-                    </motion.div>
+                    <Image
+                        src="/ImplementationPhasesImage.png"
+                        alt="فازهای پیاده‌سازی SLA داینامیک"
+                        width={1200}
+                        height={700}
+                        className="w-full h-auto rounded-xl object-contain"
+                        priority
+                    />
                 </motion.div>
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    className="grid grid-cols-1 mt-20 px-10 lg:grid-cols-1 gap-12 md:gap-20 items-start max-w-7xl"
+
+                {/* سه کارت فاز */}
+                <div className="space-y-16 md:space-y-20">
+                    {phases.map((phase, index) => (
+                        <motion.div
+                            key={index}
+                            custom={index}
+                            variants={phaseVariants}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            className="
+                bg-[#0A1F44]/30 backdrop-blur-lg border border-white/10
+                rounded-2xl md:rounded-3xl p-8 md:p-10 shadow-2xl shadow-black/50 
+                hover:shadow-[#FF6B00]/20 hover:border-[#FF6B00]/20 transition-all duration-500
+              "
+                        >
+                            <h3 className="text-2xl md:text-3xl font-bold text-[#FF6B00] mb-8 text-center">
+                                {phase.title}
+                            </h3>
+
+                            <ul className="space-y-6">
+                                {phase.points.map((point, i) => (
+                                    <motion.li
+                                        key={i}
+                                        variants={itemVariants}
+                                        className="flex items-start gap-5 group"
+                                    >
+                                        <div className="
+                      flex-shrink-0 w-10 h-10 rounded-xl backdrop-blur-md 
+                      bg-white/10 border border-white/20 text-[#FF6B00] 
+                      font-bold text-xl flex items-center justify-center 
+                      shadow-md group-hover:scale-110 transition-transform
+                    ">
+                                            {i + 1}
+                                        </div>
+                                        <p className="text-lg md:text-xl leading-relaxed text-white/90 text-right pt-1">
+                                            {point}
+                                        </p>
+                                    </motion.li>
+                                ))}
+                            </ul>
+                        </motion.div>
+                    ))}
+                </div>
+
+                {/* جمع‌بندی پایین */}
+                <motion.p
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: 1.2 }}
+                    className="mt-16 md:mt-20 text-center text-white/80 text-xl leading-relaxed max-w-4xl mx-auto"
                 >
-                    {/* ستون چپ: تحلیل داده‌ای */}
-                    <motion.div variants={boxVariants}
-                                className="bg-white/10 backdrop-blur-lg border border-[#FF6B00]/40 rounded-2xl p-8 md:p-10 shadow-2xl">
-                        <h3 className="text-2xl md:text-3xl font-bold text-[#FF6B00] mb-8 text-center">
-                            LSTM & SLM (مدل پیش‌بینی زمان تحویل)
-                        </h3>
-
-                        <ul className="space-y-6 text-lg md:text-xl leading-relaxed">
-                            {points2.map((item, i) => (
-                                <li key={i} className="flex items-start gap-4">
-                  <span
-                      className="flex-shrink-0 w-10 h-10 rounded-full bg-[#FF6B00]/80 text-black font-bold flex items-center justify-center text-xl">
-                    {i + 1}
-                  </span>
-                                    <div className={'flex items-start justify-center flex-col text-right'}>
-                                        <span className={'text-[15px] mt-3'}>{item.description}</span>
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
-                    </motion.div>
-                </motion.div>
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    className="grid grid-cols-1 mt-20 px-10 lg:grid-cols-1 gap-12 md:gap-20 items-start max-w-7xl"
-                >
-                    {/* ستون چپ: تحلیل داده‌ای */}
-                    <motion.div variants={boxVariants}
-                                className="bg-white/10 backdrop-blur-lg border border-[#FF6B00]/40 rounded-2xl p-8 md:p-10 shadow-2xl">
-                        <h3 className="text-2xl md:text-3xl font-bold text-[#FF6B00] mb-8 text-center">
-                            Platform
-                        </h3>
-
-                        <ul className="space-y-6 text-lg md:text-xl leading-relaxed">
-                            {points3.map((item, i) => (
-                                <li key={i} className="flex items-start gap-4">
-                  <span
-                      className="flex-shrink-0 w-10 h-10 rounded-full bg-[#FF6B00]/80 text-black font-bold flex items-center justify-center text-xl">
-                    {i + 1}
-                  </span>
-                                    <div className={'flex items-start justify-center flex-col text-right'}>
-                                        <span className={'text-[15px] mt-3'}>{item.description}</span>
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
-                    </motion.div>
-                </motion.div>
+                    پیاده‌سازی گام‌به‌گام از کشف داده تا پلتفرم عملیاتی — با حداقل اختلال و حداکثر ارزش
+                </motion.p>
             </div>
-        </div>
-    );
+        </section>
+    )
 }
-
-export default ImplementationPhases;
