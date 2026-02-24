@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export default function Hero() {
     return (
-        <section className="relative h-screen flex items-center justify-center text-center px-6 overflow-hidden bg-gradient-to-b from-[#FF6B00] via-[#0A2540] to-[#001F3F]">
+        <section className="relative h-screen flex items-center justify-center text-center px-6 overflow-hidden ">
             <div className="absolute inset-0 opacity-15 pointer-events-none bg-[radial-gradient(circle_at_30%_70%,#FF6B0011_0%,transparent_50%)]" />
 
             <motion.div

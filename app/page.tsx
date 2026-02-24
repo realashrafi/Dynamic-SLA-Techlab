@@ -1,5 +1,6 @@
 // app/page.tsx
 import Hero from "@/app/components/Hero";
+import PageLayout from "@/app/components/PageLayout";
 
 const staggerContainer = {
     hidden: {opacity: 1},
@@ -11,9 +12,8 @@ const staggerContainer = {
 
 export default function Home() {
     return (
-        <main className="bg-[#0A1F44] text-white overflow-x-hidden">
-            {/*<Header/>*/}
+        <PageLayout className=" text-white overflow-x-hidden">
             <Hero/>
-        </main>
+        </PageLayout>
     )
 }

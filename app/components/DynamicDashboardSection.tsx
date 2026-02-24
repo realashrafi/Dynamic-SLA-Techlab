@@ -220,7 +220,7 @@ export default function DynamicSlaDashboardSection() {
                 </motion.h2>
 
                 {/* فرم ثابت */}
-                <div className="sticky top-4 z-40 bg-[#001F3F]/95 backdrop-blur-lg border border-[#FF6B00]/40 rounded-xl p-5 md:p-6 mb-10 shadow-2xl">
+                <div className="sticky top-20 z-40 bg-[#0A1F44]/30 backdrop-blur-lg  border border-[#FF6B00]/40 rounded-xl p-5 md:p-6 mb-10 shadow-2xl">
                     <div className="flex flex-wrap gap-4 md:gap-6 items-end">
                         <div className="flex-1 min-w-[160px]">
                             <label className="block text-sm opacity-80 mb-1">مبدا</label>
@@ -285,24 +285,24 @@ export default function DynamicSlaDashboardSection() {
                             </select>
                         </div>
                     </div>
+                    {/* تب‌ها */}
+                    <div className="flex  overflow-x-auto">
+                        {tabs.map((tab) => (
+                            <button
+                                key={tab.id}
+                                onClick={() => setActiveTab(tab.id)}
+                                className={`px-5 py-3 md:px-6 md:py-4 font-medium whitespace-nowrap transition-colors ${
+                                    activeTab === tab.id
+                                        ? 'border-b-4 border-[#FF6B00] text-[#FF6B00]'
+                                        : 'text-white/70 hover:text-white'
+                                }`}
+                            >
+                                {tab.label}
+                            </button>
+                        ))}
+                    </div>
                 </div>
 
-                {/* تب‌ها */}
-                <div className="flex border-b border-[#FF6B00]/30 mb-8 overflow-x-auto">
-                    {tabs.map((tab) => (
-                        <button
-                            key={tab.id}
-                            onClick={() => setActiveTab(tab.id)}
-                            className={`px-5 py-3 md:px-6 md:py-4 font-medium whitespace-nowrap transition-colors ${
-                                activeTab === tab.id
-                                    ? 'border-b-4 border-[#FF6B00] text-[#FF6B00]'
-                                    : 'text-white/70 hover:text-white'
-                            }`}
-                        >
-                            {tab.label}
-                        </button>
-                    ))}
-                </div>
 
                 {/* محتوای تب */}
                 <motion.div
@@ -310,7 +310,7 @@ export default function DynamicSlaDashboardSection() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    className="bg-[#001F3F]/60 backdrop-blur-md border border-[#FF6B00]/30 rounded-2xl p-6 md:p-8 shadow-2xl min-h-[500px]"
+                    className="bg-[#0A1F44]/30 backdrop-blur-lg border border-[#FF6B00]/30 rounded-2xl p-6 md:p-8 shadow-2xl min-h-[500px]"
                 >
                     {activeTab === 'overview' ? (
                         <div className="grid grid-cols-1 lg:grid-cols-6 gap-7 lg:gap-10">

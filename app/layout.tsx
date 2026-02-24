@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/app/components/SidebarNav";
+import Aurora from "@/app/components/Aurora";
+import React from "react";
+import Header from "@/app/components/Header";
+import Footer from "@/app/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,10 +30,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable}  antialiased`}
       >
+      <div className="fixed inset-0 z-[-1] bg-gradient-to-br from-gray-500 to-[#001F3F] pointer-events-none">
+          <Aurora
+              colorStops={["#200094", "#f07400", "#060809"]}
+              blend={0.32}
+              amplitude={1.0}
+              speed={0.4}
+          />
+      </div>
+      <Header />
       <Sidebar/>
         {children}
+      <Footer />
       </body>
     </html>
   );

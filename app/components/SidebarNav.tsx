@@ -63,14 +63,14 @@ export default function Sidebar() {
             {/* دکمه همبرگر - فقط موبایل */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="fixed top-5 right-5 z-50 md:hidden p-3 bg-[#0A1F44]/70 backdrop-blur-md rounded-full text-white shadow-lg hover:bg-blue-900/50 transition-all"
+                className="fixed top-1.5 right-3 z-50 md:hidden p-3 bg-[#0A1F44]/40  rounded-full text-white shadow-lg hover:bg-blue-900/50 transition-all"
                 aria-label="باز و بسته کردن منو"
             >
                 {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
 
             {/* سایدبار دسکتاپ - همیشه visible از md به بالا */}
-            <aside className="hidden md:block w-64 lg:w-72 fixed top-0 right-0 h-screen bg-[#0A1F44]/85 backdrop-blur-lg border-l border-white/10 z-40 overflow-y-auto">
+            <aside className="hidden md:block w-64 lg:w-72 fixed top-[64px] right-0 h-screen bg-[#0A1F44]/30 backdrop-blur-lg border-l border-white/10 z-40 overflow-y-auto">
                 <div className="p-6 md:p-8">
                     <h2 className="text-2xl font-bold mb-10 text-center md:text-right">منو</h2>
                     <nav className="space-y-2">
@@ -115,9 +115,9 @@ export default function Sidebar() {
                             initial="hidden"
                             animate="visible"
                             exit="exit"
-                            className="fixed inset-y-0 right-0 w-4/5 max-w-xs bg-[#0A1F44]/95 backdrop-blur-xl z-50 flex flex-col md:hidden shadow-2xl"
+                            className="fixed inset-y-0 right-0 w-4/5 max-w-xs bg-[#0A1F44]/30 backdrop-blur-lg border-l border-white/10 z-50 flex flex-col md:hidden shadow-2xl"
                         >
-                            <div className="flex items-center justify-between p-6 border-b border-white/10">
+                            <div className="flex items-center justify-between p-4 border-b border-white/10">
                                 <h2 className="text-xl font-bold">منو</h2>
                                 <button onClick={() => setIsOpen(false)}>
                                     <X size={32} />
