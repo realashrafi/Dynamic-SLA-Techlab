@@ -114,7 +114,7 @@ export default function AdminDashboard() {
 
     // اگر اینجا رسیدیم یعنی کاربر ادمین است
     return (
-        <div className="min-h-screen text-white pb-20">
+        <div className="min-h-screen text-white pb-20 pr-0 md:pr-64 lg:pr-70 mx-auto">
             {/* هدر پنل */}
             <div className="mt-20 sticky top-20 z-40">
                 <div className="max-w-7xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
