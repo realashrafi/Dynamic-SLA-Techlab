@@ -68,9 +68,13 @@ export default function LoginPage() {
                     <h1 className="text-3xl md:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-white tracking-tight">
                         ورود به Dynamic SLA
                     </h1>
-                    <p className="mt-2 text-white/60 text-sm md:text-base">
-                        مدیریت هوشمند سطح خدمات تیپاکس
-                    </p>
+                    <div className="flex items-center text-white text-sm ">
+                        <span className="font-extrabold text-lg  text-[#FF8C3A]">تک</span>
+                        <span className="font-extrabold text-lg  mr-0.5 text-[#0A5593]">‌لب</span>
+                        <span className="mr-2 sm:mr-1 text-gray-300 hidden sm:inline">
+              ، راه‌برد با تکنولوژی
+            </span>
+                    </div>
                 </div>
 
                 {/* پیام خطا */}

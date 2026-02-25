@@ -1,11 +1,11 @@
 // components/Header.tsx
 'use client'
 
-import { useEffect, useState } from 'react'
+import {useEffect, useState} from 'react'
 import Link from 'next/link'
-import { usePathname, useRouter } from 'next/navigation'
+import {usePathname, useRouter} from 'next/navigation'
 import DynamicSlaIcon from "@/app/components/DynamicSlaIcon"
-import { motion } from 'framer-motion'
+import {motion} from 'framer-motion'
 import {Cookie, LogOut} from "lucide-react"
 
 export default function Header() {
@@ -47,25 +47,24 @@ export default function Header() {
 
     return (<>
             {isLoggedIn && (
-                <header className="fixed top-0 left-0 right-0 z-50 bg-[#0A1F44]/30 backdrop-blur-lg border-b border-white/10 shadow-sm">
-                    <div className="mx-auto px-20 md:px-10 py-4 flex items-center justify-between">
+                <header
+                    className="fixed top-0 left-0 right-0 z-50 bg-[#0A1F44]/30 backdrop-blur-lg border-b border-white/10 shadow-sm">
+                    <div className="mx-auto pr-20 pl-5 md:px-10 py-4 flex items-center justify-between">
                         {/* لوگو / عنوان */}
                         <Link href="/" className="text-2xl flex items-center text-white font-bold tracking-tight">
-                            <DynamicSlaIcon className="ml-4" />
+                            <DynamicSlaIcon className="ml-4"/>
+                            <div className="flex items-center text-white text-sm ">
+                                <span className="font-extrabold text-lg  text-[#FF8C3A]">تک</span>
+                                <span className="font-extrabold text-lg  mr-0.5 text-[#0A5593]">‌لب</span>
+                                <span className="mr-2 sm:mr-1 text-gray-300 hidden sm:inline">
+              ، راه‌برد با تکنولوژی
+            </span>
+                            </div>
+                        </Link>
+                        <Link href="/" className="text-2xl flex items-center text-white font-bold tracking-tight">
                             Dynamic<span className="text-[#FF6B00]">SLA</span>
                         </Link>
 
-                        {/* دکمه خروج – فقط وقتی لاگین هستیم نشون داده بشه */}
-                        {isLoggedIn && (
-                            <motion.button
-                                whileTap={{ scale: 0.92 }}
-                                onClick={handleLogout}
-                                className="text-[#FF8C3A] gap-2 font-semibold bg-black/10 flex items-center justify-center hover:text-[#FFAA55] text-sm px-3 py-1.5 rounded-lg transition-colors"
-                            >
-                                <LogOut size={20} strokeWidth={2} />
-                                خروج
-                            </motion.button>
-                        )}
                     </div>
                 </header>
             )}
