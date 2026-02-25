@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 export default function DynamicSlaDataModel() {
     return (
-        <section className="py-20 md:py-28 lg:py-36 px-5 sm:px-8 lg:px-16 text-white overflow-hidden">
+        <section className="py-20 md:py-28 lg:py-36 px-5 sm:px-8 lg:px-16 bg-[#0A1F44]/30 text-white overflow-hidden">
             <div className="max-w-6xl mx-auto">
                 {/* عنوان با خط گرادیان نارنجی */}
                 <div className="flex items-center justify-center gap-5 md:gap-6 mb-12 md:mb-16">

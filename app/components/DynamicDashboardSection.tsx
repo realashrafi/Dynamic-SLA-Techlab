@@ -207,7 +207,7 @@ export default function DynamicSlaDashboardSection() {
     ]
 
     return (
-        <section className="py-20 px-4 md:px-12 ">
+        <section className="py-20 px-4 md:px-12 bg-[#0A1F44]/30">
             <div className="max-w-5xl mx-auto">
                 {/* عنوان */}
                 <motion.h2

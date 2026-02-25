@@ -1,97 +1,150 @@
-'use client';
+// app/register/page.tsx  (یا components/RegisterPage.tsx)
+'use client'
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
+import { motion } from 'framer-motion'
+import DynamicSlaIcon from "@/app/components/DynamicSlaIcon";
+
 
 export default function RegisterPage() {
-    const router = useRouter();
-    const [form, setForm] = useState({ name: '', email: '', password: '' });
-    const [error, setError] = useState('');
-    const [success, setSuccess] = useState('');
-    const [loading, setLoading] = useState(false);
+    const router = useRouter()
+    const [form, setForm] = useState({ name: '', email: '', password: '' })
+    const [error, setError] = useState('')
+    const [success, setSuccess] = useState('')
+    const [loading, setLoading] = useState(false)
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setForm({ ...form, [e.target.name]: e.target.value });
-    };
+        setForm({ ...form, [e.target.name]: e.target.value })
+    }
 
     const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setError('');
-        setSuccess('');
-        setLoading(true);
+        e.preventDefault()
+        setError('')
+        setSuccess('')
+        setLoading(true)
 
         try {
             const res = await fetch('/api/auth/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(form),
-            });
+            })
 
-            const data = await res.json();
+            const data = await res.json()
 
             if (!res.ok) {
-                setError(data.error || 'خطایی رخ داد');
-                return;
+                setError(data.error || 'خطایی رخ داد. لطفاً دوباره تلاش کنید.')
+                return
             }
 
-            setSuccess('ثبت‌نام با موفقیت انجام شد. حالا می‌توانید وارد شوید.');
+            setSuccess('ثبت‌نام با موفقیت انجام شد. در حال انتقال به صفحه ورود...')
             setTimeout(() => {
-                router.push('/login');
-            }, 2000);
+                router.push('/login')
+            }, 2000)
         } catch (err) {
-            setError('اتصال به سرور برقرار نشد');
+            setError('اتصال به سرور برقرار نشد. لطفاً اتصال اینترنت خود را بررسی کنید.')
         } finally {
-            setLoading(false);
+            setLoading(false)
         }
-    };
+    }
 
     return (
-        <div dir="rtl" className="min-h-screen flex items-center justify-center bg-gray-100">
-            <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-                <h1 className="text-2xl font-bold mb-6 text-center">ثبت‌نام</h1>
+        <div className="min-h-screen flex items-center justify-center px-5 py-12">
+            <motion.div
+                initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.8, ease: 'easeOut' }}
+                className="
+          backdrop-blur-2xl bg-white/5 border border-white/10
+          rounded-2xl md:rounded-3xl shadow-2xl shadow-black/60
+          p-8 md:p-12 w-full max-w-md relative overflow-hidden
+        "
+            >
+                {/* افکت گرادیان نارنجی ملایم در پس‌زمینه */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#FF6B00]/5 via-transparent to-transparent pointer-events-none" />
 
+                {/* لوگو و عنوان */}
+                <div className="flex flex-col items-center mb-10">
+                    <DynamicSlaIcon className="w-16 h-16 md:w-20 md:h-20 mb-4" />
+                    <h1 className="text-2xl md:text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-white tracking-tight">
+                        ثبت‌نام در Dynamic SLA
+                    </h1>
+                    <p className="mt-2 text-white/60 text-sm md:text-base">
+                        شروع همکاری هوشمند با تیپاکس
+                    </p>
+                </div>
+
+                {/* پیام خطا */}
                 {error && (
-                    <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+                    <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="bg-red-900/40 border border-red-500/50 text-red-200 px-4 py-3 rounded-xl mb-6 text-center text-sm"
+                    >
                         {error}
-                    </div>
+                    </motion.div>
                 )}
 
+                {/* پیام موفقیت */}
                 {success && (
-                    <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+                    <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="bg-green-900/40 border border-green-500/50 text-green-200 px-4 py-3 rounded-xl mb-6 text-center text-sm"
+                    >
                         {success}
-                    </div>
+                    </motion.div>
                 )}
 
-                <form onSubmit={handleSubmit} className="space-y-5">
+                {/* فرم ثبت‌نام */}
+                <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">نام و نام خانوادگی</label>
+                        <label className="block text-sm font-medium text-white/80 mb-2">
+                            نام و نام خانوادگی
+                        </label>
                         <input
                             type="text"
                             name="name"
                             value={form.name}
                             onChange={handleChange}
                             required
-                            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="
+                w-full px-5 py-3 bg-white/5 border border-white/20
+                rounded-xl text-white placeholder-white/40
+                focus:outline-none focus:border-[#FF6B00]/50 focus:ring-2 focus:ring-[#FF6B00]/30
+                transition-all duration-300
+              "
                             placeholder="علی محمدی"
                         />
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">ایمیل</label>
+                        <label className="block text-sm font-medium text-white/80 mb-2">
+                            ایمیل
+                        </label>
                         <input
                             type="email"
                             name="email"
                             value={form.email}
                             onChange={handleChange}
                             required
-                            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            autoComplete="email"
+                            className="
+                w-full px-5 py-3 bg-white/5 border border-white/20
+                rounded-xl text-white placeholder-white/40
+                focus:outline-none focus:border-[#FF6B00]/50 focus:ring-2 focus:ring-[#FF6B00]/30
+                transition-all duration-300
+              "
                             placeholder="example@email.com"
                         />
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">رمز عبور</label>
+                        <label className="block text-sm font-medium text-white/80 mb-2">
+                            رمز عبور
+                        </label>
                         <input
                             type="password"
                             name="password"
@@ -99,7 +152,13 @@ export default function RegisterPage() {
                             onChange={handleChange}
                             required
                             minLength={6}
-                            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            autoComplete="new-password"
+                            className="
+                w-full px-5 py-3 bg-white/5 border border-white/20
+                rounded-xl text-white placeholder-white/40
+                focus:outline-none focus:border-[#FF6B00]/50 focus:ring-2 focus:ring-[#FF6B00]/30
+                transition-all duration-300
+              "
                             placeholder="حداقل ۶ کاراکتر"
                         />
                     </div>
@@ -107,19 +166,39 @@ export default function RegisterPage() {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700 disabled:bg-green-400 transition-colors"
+                        className="
+              w-full py-3.5 bg-gradient-to-r from-[#FF6B00] to-[#FF8A3D]
+              text-white font-bold rounded-xl shadow-lg
+              hover:from-[#FF8A3D] hover:to-[#FF6B00]
+              disabled:opacity-50 disabled:cursor-not-allowed
+              transition-all duration-300 transform hover:scale-[1.02]
+            "
                     >
-                        {loading ? 'در حال ثبت‌نام...' : 'ثبت‌نام'}
+                        {loading ? (
+                            <span className="flex items-center justify-center gap-2">
+                <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                  <path fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
+                </svg>
+                در حال ثبت‌نام...
+              </span>
+                        ) : (
+                            'ثبت‌نام'
+                        )}
                     </button>
                 </form>
 
-                <p className="mt-6 text-center text-sm text-gray-600">
-                    حساب دارید؟{' '}
-                    <Link href="/login" className="text-blue-600 hover:underline">
+                {/* لینک ورود */}
+                <p className="mt-8 text-center text-white/70 text-sm">
+                    حساب کاربری دارید؟{' '}
+                    <Link
+                        href="/login"
+                        className="text-[#FF6B00] hover:text-[#FF8A3D] font-medium transition-colors"
+                    >
                         وارد شوید
                     </Link>
                 </p>
-            </div>
+            </motion.div>
         </div>
-    );
+    )
 }

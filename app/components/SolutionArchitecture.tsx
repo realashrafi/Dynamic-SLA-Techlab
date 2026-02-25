@@ -55,7 +55,7 @@ const itemVariants = {
 
 export default function SolutionArchitecture() {
     return (
-        <section className="py-20 md:py-28 lg:py-36 px-5 sm:px-8 lg:px-16  text-white overflow-hidden">
+        <section className="py-20 md:py-28 lg:py-36 px-5 sm:px-8 lg:px-16 bg-[#0A1F44]/30 text-white overflow-hidden">
             <div className="max-w-6xl mx-auto relative z-10">
                 {/* عنوان اصلی با گرادیان */}
                 <motion.div

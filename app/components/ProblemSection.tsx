@@ -15,7 +15,7 @@ const problems = [
 
 export default function ProblemSection() {
     return (
-        <section className="py-20 md:py-28 lg:py-36 px-5 sm:px-8 lg:px-16 bg-[#0A1F44]/30 border border-white/10 text-white overflow-hidden">
+        <section className="py-20 md:py-28 lg:py-36 px-5 sm:px-8 lg:px-16 bg-[#0A1F44]/30 text-white overflow-hidden">
             <div className="max-w-5xl mx-auto">
                 {/* هدر */}
                 <div className="flex items-center gap-5 md:gap-6 mb-12 md:mb-16">

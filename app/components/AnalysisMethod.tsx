@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 
 export default function AnalysisMethod() {
     return (
-        <section className="py-20 md:py-28 lg:py-36 px-5 sm:px-8 lg:px-16 text-white overflow-hidden">
+        <section className="py-20 md:py-28 lg:py-36 px-5 sm:px-8 lg:px-16 bg-[#0A1F44]/30 text-white overflow-hidden">
             <div className="max-w-6xl mx-auto">
                 {/* هدر */}
                 <div className="flex items-center gap-5 md:gap-6 mb-12 md:mb-16">

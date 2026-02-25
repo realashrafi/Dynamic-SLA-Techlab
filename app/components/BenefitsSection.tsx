@@ -5,12 +5,12 @@ import { motion } from 'framer-motion'
 
 export default function BenefitsSection() {
     return (
-        <section className="py-20 md:py-28 lg:py-36 px-5 sm:px-8 lg:px-16 text-white relative overflow-hidden">
+        <section className="py-20 md:py-28 lg:py-36 px-5 sm:px-8 lg:px-16 text-white relative overflow-hidden bg-[#0A1F44]/30 ">
             {/* پس‌زمینه subtle گرادیان + radial نارنجی ملایم */}
-            <div className="absolute inset-0 pointer-events-none opacity-30">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,#FF6B0022_0%,transparent_70%)]" />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,#3b82f622_0%,transparent_60%)]" />
-            </div>
+            {/*<div className="absolute inset-0 pointer-events-none opacity-30">*/}
+            {/*    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,#FF6B0022_0%,transparent_70%)]" />*/}
+            {/*    <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,#3b82f622_0%,transparent_60%)]" />*/}
+            {/*</div>*/}
 
             <div className="max-w-6xl mx-auto relative z-10">
                 {/* عنوان */}
