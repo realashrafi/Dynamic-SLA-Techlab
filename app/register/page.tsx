@@ -68,8 +68,10 @@ export default function RegisterPage() {
                 {/* لوگو و عنوان */}
                 <div className="flex flex-col items-center mb-10">
                     <DynamicSlaIcon className="w-16 h-16 md:w-20 md:h-20 mb-4" />
-                    <h1 className="text-2xl md:text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-white tracking-tight">
-                        ثبت‌نام در Dynamic SLA
+                    <h1 className="text-xl md:text-2xl flex gap-2 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-white tracking-tight">
+                        ثبت‌نام در <Link href="/" className="text-2xl flex items-center text-white font-bold tracking-tight">
+                        Dynamic<span className="text-[#FF6B00]">SLA</span>
+                    </Link>
                     </h1>
                     <div className="flex items-center text-white text-sm ">
                         <span className="font-extrabold text-lg  text-[#FF8C3A]">تک</span>
