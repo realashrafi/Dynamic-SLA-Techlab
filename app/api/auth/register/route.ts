@@ -3,15 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/db';
 import { hashPassword } from '@/lib/auth';
 import { User } from '@/models/User';
-
-// لیست سفید ایمیل‌های مجاز
-// می‌تونی این لیست را بعداً از env یا فایل json بخوانی
-const ALLOWED_EMAILS = [
-    'admin@example.com',
-    'manager@company.ir',
-    'user1@domain.com',
-    'test@yourcompany.com',
-];
+import { WhiteListSignup } from '@/models/WhiteListSignup'; // ← اضافه کردن مدل
 
 export async function POST(req: NextRequest) {
     try {
@@ -23,18 +15,24 @@ export async function POST(req: NextRequest) {
             return NextResponse.json({ error: 'همه فیلدها الزامی هستند' }, { status: 400 });
         }
 
-        // چک کردن وایت‌لیست
         const normalizedEmail = email.toLowerCase().trim();
-        if (!ALLOWED_EMAILS.includes(normalizedEmail)) {
+
+        // چک کردن وجود ایمیل در لیست سفید (کالکشن white-list-signup)
+        const allowed = await WhiteListSignup.findOne({
+            email: normalizedEmail,
+        });
+
+        if (!allowed) {
             return NextResponse.json(
                 { error: 'این ایمیل اجازه ثبت‌نام ندارد. با مدیر سیستم تماس بگیرید.' },
                 { status: 403 }
             );
         }
 
+        // چک کردن اینکه قبلاً ثبت‌نام نکرده باشد
         const existingUser = await User.findOne({ email: normalizedEmail });
         if (existingUser) {
-            return NextResponse.json({ error: 'این ایمیل قبلاً ثبت شده' }, { status: 409 });
+            return NextResponse.json({ error: 'این ایمیل قبلاً ثبت شده است' }, { status: 409 });
         }
 
         const hashedPassword = await hashPassword(password);
@@ -42,8 +40,11 @@ export async function POST(req: NextRequest) {
         const user = await User.create({
             email: normalizedEmail,
             password: hashedPassword,
-            name,
+            name: name.trim(),
         });
+
+        // اختیاری: بعد از ثبت‌نام موفق می‌تونی رکورد whitelist رو حذف کنی (یک‌بار مصرف)
+        // await WhiteListSignup.deleteOne({ email: normalizedEmail });
 
         return NextResponse.json(
             {
