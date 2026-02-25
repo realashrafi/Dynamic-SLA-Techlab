@@ -8,7 +8,8 @@ import {motion, AnimatePresence} from 'framer-motion'
 import {
     Menu, X,
     Home, HelpCircle, ShieldUser, Route, ChartCandlestick,
-    ChartPie
+    ChartPie,
+    LayoutGrid
 } from 'lucide-react'
 
 const navItems = [
@@ -77,8 +78,8 @@ export default function Sidebar() {
                     <aside
                         className="hidden md:block w-64 lg:w-72 fixed top-16 right-0 h-screen bg-[#0A1F44]/30 backdrop-blur-xl border-l border-white/10 z-40 overflow-y-auto">
                         <div className="p-6 lg:p-8">
-                            <h2 className="text-2xl lg:text-3xl font-extrabold mb-10 text-center lg:text-right bg-clip-text text-transparent bg-gradient-to-r from-white to-[#FF6B00]">
-                                منو
+                            <h2 className="text-2xl lg:text-3xl flex mr-2 items-center gap-2 font-extrabold mb-10 text-center lg:text-right bg-clip-text text-transparent bg-gradient-to-r from-white to-[#FF6B00]">
+                                <LayoutGrid className={'text-[#FF6B00]'} />منو
                             </h2>
                             <nav className="space-y-1.5">
                                 {navItems.map((item) => {
