@@ -35,13 +35,11 @@ export default function DynamicSlaDataModel() {
             hover:shadow-[#FF6B00]/25 hover:border-[#FF6B00]/25 transition-all duration-500
           "
                 >
-                    <Image
-                        src="/DynamicSlaDataModelImage.png"
+                    <img
+                        src="https://kb.studionona.ir/index.php/s/5my3fRf9HGb4Y74/download"
                         alt="مدل داده‌ای SLA داینامیک - جریان تاثیرگذاری و استفاده از داده"
-                        width={1400}
-                        height={900}
                         className="w-full h-auto rounded-xl object-contain"
-                        priority
+
                     />
 
                     {/* لایه گرادیان ملایم برای عمق بیشتر */}

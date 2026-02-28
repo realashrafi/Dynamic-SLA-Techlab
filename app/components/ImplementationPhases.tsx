@@ -81,13 +81,10 @@ export default function ImplementationPhases() {
             overflow-hidden p-4 md:p-6 mx-auto max-w-5xl mb-16 md:mb-20
           "
                 >
-                    <Image
-                        src="/ImplementationPhasesImage.png"
+                    <img
+                        src="https://kb.studionona.ir/index.php/s/ED7zqREzwqDQnQK/download"
                         alt="فازهای پیاده‌سازی SLA داینامیک"
-                        width={1200}
-                        height={700}
                         className="w-full h-auto rounded-xl object-contain"
-                        priority
                     />
                 </motion.div>
 
